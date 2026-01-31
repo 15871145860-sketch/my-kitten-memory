@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Goodbye, My Kitten - Final Warm Memory</title>
+    <style>
+        /* --- 1. Global Settings & Fonts --- */
+        :root {
+            /* Custom Cursors - White Ghost Style */
+            --cursor-default: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path fill="%23FFFFFF" d="M10.5,2c-1.7,0-3,1.3-3,3s1.3,3,3,3s3-1.3,3-3S12.2,2,10.5,2z M21.5,2c-1.7,0-3,1.3-3,3s1.3,3,3,3s3-1.3,3-3 S23.2,2,21.5,2z M5.5,8C3.6,8,2,9.6,2,11.5s1.6,3.5,3.5,3.5S9,13.4,9,11.5S7.4,8,5.5,8z M26.5,8c-1.9,0-3.5,1.6-3.5,3.5 s1.6,3.5,3.5,3.5s3.5-1.6,3.5-3.5S28.4,8,26.5,8z M16,11c-4,0-7.5,3-8,7c-0.3,2.3,0.5,4.5,2,6c1.4,1.4,2.4,3.8,3.1,5.6 c0.3,0.9,1.3,1.4,2.2,1.1c0.4-0.1,0.8-0.4,1-0.8c0.1-0.3,0.6-1.6,1.6-3.7c0.5,1,1,1.6,1,1.7c0.3,0.7,1,1.2,1.8,1c0.8-0.1,1.4-0.8,1.4-1.6 c0-0.1-0.1-0.8-0.4-2.1c1.7-2.3,3.3-5,3.2-8.1C24.9,13.4,20.9,11,16,11z"/></svg>') 16 16, auto;
+            --cursor-pointer: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path fill="%23CCCCCC" d="M10.5,2c-1.7,0-3,1.3-3,3s1.3,3,3,3s3-1.3,3-3S12.2,2,10.5,2z M21.5,2c-1.7,0-3,1.3-3,3s1.3,3,3,3s3-1.3,3-3 S23.2,2,21.5,2z M5.5,8C3.6,8,2,9.6,2,11.5s1.6,3.5,3.5,3.5S9,13.4,9,11.5S7.4,8,5.5,8z M26.5,8c-1.9,0-3.5,1.6-3.5,3.5 s1.6,3.5,3.5,3.5s3.5-1.6,3.5-3.5S28.4,8,26.5,8z M16,11c-4,0-7.5,3-8,7c-0.3,2.3,0.5,4.5,2,6c1.4,1.4,2.4,3.8,3.1,5.6 c0.3,0.9,1.3,1.4,2.2,1.1c0.4-0.1,0.8-0.4,1-0.8c0.1-0.3,0.6-1.6,1.6-3.7c0.5,1,1,1.6,1,1.7c0.3,0.7,1,1.2,1.8,1c0.8-0.1,1.4-0.8,1.4-1.6 c0-0.1-0.1-0.8-0.4-2.1c1.7-2.3,3.3-5,3.2-8.1C24.9,13.4,20.9,11,16,11z"/></svg>') 16 16, pointer;
+            
+            --ui-bg: rgba(0, 0, 0, 0.4);
+            --ui-border: rgba(255, 255, 255, 0.3);
+            --ui-glow: rgba(255, 255, 255, 0.6);
+            --text-color: #eee;
+        }
+
+        body { 
+            margin: 0; overflow: hidden; background-color: #1a1a1a; 
+            font-family: 'Courier New', Courier, monospace; 
+            cursor: var(--cursor-default);
+            user-select: none;
+        }
+        
+        button, .btn, #theme-toggle, #sound-toggle, .item-slot, .confirm-btn, .restart-btn, .start-btn {
+            cursor: var(--cursor-pointer) !important;
+        }
+
+        /* --- 2. Story Screen (Nature Ambience) --- */
+        .story-screen {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, #020205 0%, #0a0f1e 60%, #111827 100%);
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            z-index: 9999; 
+            color: #ddd; 
+            text-align: center; padding: 40px; box-sizing: border-box;
+            transition: opacity 2s ease;
+            overflow: hidden;
+        }
+
+        #nature-bg {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: -1;
+        }
+
+        /* Animated Grass */
+        .grass {
+            position: absolute; bottom: 0; width: 2px; background: #000;
+            border-radius: 50% 50% 0 0; transform-origin: bottom center;
+            opacity: 0.6; animation: sway ease-in-out infinite;
+        }
+        @keyframes sway {
+            0%, 100% { transform: rotate(4deg); } 50% { transform: rotate(-4deg); }
+        }
+
+        /* Floating Particles */
+        .particle {
+            position: absolute; background: #fff; border-radius: 50%;
+            opacity: 0; animation: floatUp linear infinite;
+        }
+        @keyframes floatUp {
+            0% { opacity: 0; transform: translateY(0) scale(0.5); }
+            50% { opacity: 0.8; transform: translateY(-50px) scale(1.2); }
+            100% { opacity: 0; transform: translateY(-100px) scale(0.5); }
+        }
+
+        .story-content { max-width: 600px; line-height: 2; font-size: 16px; letter-spacing: 1px; z-index: 2; text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
+        .story-title { font-size: 28px; margin-bottom: 30px; letter-spacing: 5px; color: #fff; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 20px;}
+        .story-text p { margin-bottom: 20px; opacity: 0; transform: translateY(20px); animation: fadeUp 1.5s forwards; }
+
+        .story-text p:nth-child(1) { animation-delay: 0.5s; }
+        .story-text p:nth-child(2) { animation-delay: 2.0s; }
+        .story-text p:nth-child(3) { animation-delay: 3.5s; }
+
+        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+        .start-btn {
+            margin-top: 50px; padding: 15px 50px;
+            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.5); color: #fff;
+            font-size: 14px; letter-spacing: 4px; text-transform: uppercase;
+            opacity: 0; animation: fadeUp 1s forwards 5s; 
+            transition: all 0.3s; backdrop-filter: blur(5px);
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+        .start-btn:hover { 
+            background: #fff; color: #000; box-shadow: 0 0 30px rgba(255,255,255,0.6);
+        }
+
+/* 修改结局屏幕：让文字显示更柔和 */
+#end-screen {
+    background: rgba(0, 0, 0, 0.85); 
+    backdrop-filter: blur(10px);
+    z-index: 999;
+    display: none;
+    opacity: 0;
+    transition: opacity 3s ease; /* 3秒平滑进入 */
+}
+
+#end-screen.show {
+    display: flex;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* 文字渐显动画 */
+.story-text p {
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: slowFadeUp 2.5s ease forwards;
+}
+@keyframes slowFadeUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 照片慢慢显现的样式 */
+.scattered-memory {
+    position: absolute;
+    width: 140px;
+    padding: 10px 10px 25px 10px;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    z-index: 998; /* 确保在 end-screen 的文字层级(999)之下 */
+    opacity: 0;
+    cursor: pointer;
+    
+    /* 关键：使用迸发动画 */
+    left: 0; top: 0;
+    animation: burstOut 3.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes burstOut {
+    0% {
+        opacity: 0;
+        transform: translate(var(--startX), var(--startY)) scale(0.2) rotate(0deg);
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+        transform: translate(var(--targetX), var(--targetY)) scale(1) rotate(var(--rot));
+    }
+}
+
+/* 结局文字强制在最顶层 */
+#end-screen .story-content {
+    z-index: 1001; 
+    position: relative;
+    pointer-events: none; /* 穿透点击，方便抓取文字下的照片 */
+}
+
+@keyframes photoSlowFade {
+    0% { opacity: 0; transform: scale(0.9) rotate(var(--rot)); }
+    100% { opacity: 1; transform: scale(1) rotate(var(--rot)); }
+}
+
+#end-screen.show {
+    display: flex;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* 结局文字内容：保持在最顶层且不拦截底部照片的拖拽 */
+#end-screen .story-content {
+    position: relative;
+    z-index: 1001; 
+    pointer-events: none; /* 允许鼠标穿透文字去点照片 */
+}
+
+/* 结局按钮：需要恢复点击 */
+#end-screen .start-btn {
+    pointer-events: auto;
+}
+
+/* 散落的照片：层级位于背景之上，文字之下 */
+.scattered-memory {
+    position: absolute;
+    width: 140px;
+    padding: 10px 10px 25px 10px;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    z-index: 1000; /* 介于背景和文字 UI 之间 */
+    opacity: 0;
+    cursor: var(--cursor-pointer) !important;
+    animation: photoAppear 1s ease-out forwards;
+}
+
+@keyframes photoAppear {
+    from { opacity: 0; transform: scale(0.8) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0) rotate(var(--rot)); }
+}
+
+        /* --- 3. UI Elements (White Cyberpunk) --- */
+        
+        .round-btn {
+            position: absolute; left: 30px;
+            width: 44px; height: 44px; 
+            background: var(--ui-bg); border: 1px solid var(--ui-border); backdrop-filter: blur(8px);
+            display: flex; justify-content: center; align-items: center;
+            font-size: 18px; color: var(--text-color);
+            z-index: 20; transition: all 0.3s ease;
+            clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);
+        }
+        .round-btn:hover { border-color: #fff; box-shadow: 0 0 15px var(--ui-glow); text-shadow: 0 0 8px #fff; }
+        
+        #theme-toggle { top: 30px; }
+        #sound-toggle { top: 85px; } 
+
+        #ui-container {
+            position: absolute; bottom: 40px; left: 30px;
+            display: flex; flex-direction: column; gap: 8px; z-index: 10;
+        }
+        .btn {
+            background: var(--ui-bg); backdrop-filter: blur(8px);
+            border: 1px solid var(--ui-border); padding: 12px 20px; 
+            color: rgba(255,255,255,0.7); font-size: 12px; letter-spacing: 2px;
+            text-transform: uppercase; text-align: left; width: 180px; 
+            font-family: 'Courier New', monospace; transition: all 0.3s ease; 
+            position: relative; overflow: hidden;
+            clip-path: polygon(0 0, 95% 0, 100% 20%, 100% 100%, 5% 100%, 0 80%);
+        }
+        .btn::before {
+            content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+            background: transparent; transition: background 0.3s;
+        }
+        .btn:hover { 
+            color: #fff; border-color: rgba(255,255,255,0.8);
+            background: rgba(255,255,255,0.05); padding-left: 25px; 
+        }
+        .btn.active { 
+            color: #fff; border-color: #fff; background: rgba(255,255,255,0.1);
+            box-shadow: 0 0 15px rgba(255,255,255,0.2);
+        }
+        .btn.active::before { background: #fff; } 
+        .btn.locked { color: #555; border-color: #333; cursor: not-allowed; background: rgba(0,0,0,0.6); }
+        
+        #inventory-sidebar {
+            position: absolute; top: 30px; right: 30px; width: 70px; padding: 15px 0;
+            min-height: 80px; display: flex; flex-direction: column; gap: 15px; align-items: center;
+            z-index: 10; background: var(--ui-bg); backdrop-filter: blur(8px);
+            border: 1px solid var(--ui-border); border-top: 3px solid #fff; 
+        }
+        #inventory-sidebar::before { content: 'PACK'; font-size: 10px; color: #fff; opacity: 0.8; margin-bottom: 5px; letter-spacing: 1px; }
+        .item-slot {
+            width: 45px; height: 45px; background: rgba(255,255,255,0.05); 
+            border: 1px solid rgba(255,255,255,0.2);
+            display: flex; justify-content: center; align-items: center; font-size: 20px;
+            transition: transform 0.2s; animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .item-slot:hover { 
+            border-color: #fff; background: rgba(255,255,255,0.15);
+            box-shadow: 0 0 10px var(--ui-glow); transform: scale(1.1);
+        }
+        @keyframes popIn { 0% { transform: scale(0); } 100% { transform: scale(1); } }
+
+        /* --- 4. Polaroid Modal --- */
+        .modal-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6); 
+            display: flex; justify-content: center; align-items: center;
+            z-index: 100; opacity: 0; pointer-events: none; transition: opacity 0.5s ease;
+            backdrop-filter: blur(3px);
+        }
+        .modal-overlay.show { opacity: 1; pointer-events: auto; }
+        
+        .modal-content.polaroid-style {
+            background: #fff; padding: 15px 15px 30px 15px;
+            border-radius: 2px; max-width: 360px; width: 90%; text-align: left;
+            box-shadow: 0 0 50px rgba(255,255,255,0.1); 
+            transform: rotate(-2deg) translateY(20px);
+            transition: transform 0.5s ease; position: relative;
+        }
+        .modal-overlay.show .modal-content { transform: rotate(-2deg) translateY(0); }
+
+        .modal-content.polaroid-style::after {
+            content: ''; position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
+            width: 100px; height: 30px; background: rgba(255,255,255,0.3);
+            backdrop-filter: blur(2px); border: 1px solid rgba(255,255,255,0.4);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .photo-frame {
+            width: 100%; height: 240px; background: #eee; margin-bottom: 20px;
+            overflow: hidden; border: 1px solid #ddd;
+        }
+        #item-modal-img {
+            width: 100%; height: 100%; object-fit: cover;
+            filter: sepia(0.2) contrast(1.1); 
+            display: none;
+        }
+
+        .text-container { text-align: center; }
+        .modal-content h2 { 
+            color: #111; margin: 0 0 10px 0; 
+            font-family: 'Courier New', serif; font-size: 20px; letter-spacing: -1px;
+            border-bottom: 1px dashed #aaa; padding-bottom: 10px;
+        }
+        .modal-content p { 
+            color: #444; font-size: 13px; line-height: 1.6; 
+            font-family: 'Verdana', sans-serif; margin-bottom: 25px;
+        }
+
+        #item-modal-icon { display: none; }
+
+        .confirm-btn {
+            background: #111; color: #fff; border: 1px solid #111; 
+            padding: 10px 30px; border-radius: 0; 
+            font-family: 'Courier New', monospace; font-weight: bold; text-transform: uppercase;
+            transition: all 0.2s; cursor: pointer;
+        }
+        .confirm-btn:hover { background: #fff; color: #111; }
+
+        #toast {
+            position: absolute; top: 15%; left: 50%; transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.8); border: 1px solid #fff; color: #fff; 
+            padding: 10px 30px; font-size: 14px; letter-spacing: 1px;
+            pointer-events: none; opacity: 0; transition: opacity 0.3s; z-index: 50; 
+        }
+        #loading {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            color: #fff; font-size: 16px; letter-spacing: 3px; 
+            pointer-events: none; z-index: 5; text-transform: uppercase;
+            animation: breathe 2s infinite;
+        }
+        @keyframes breathe { 0%,100%{opacity:0.5} 50%{opacity:1} }
+
+        /* 结尾图片卡片样式 */
+.scattered-memory {
+    position: absolute;
+    width: 120px;
+    padding: 8px;
+    background: #fff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    cursor: grab;
+    z-index: 10000; /* 确保在结尾屏幕之上 */
+    transform-origin: center;
+    user-select: none;
+    transition: transform 0.2s ease;
+}
+.scattered-memory {
+    position: absolute;
+    width: 140px;
+    padding: 10px 10px 25px 10px;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    z-index: 10000;
+    opacity: 0; /* 初始透明 */
+    pointer-events: auto;
+    cursor: var(--cursor-pointer) !important;
+    
+    /* 缓缓移动动画：漂浮 8 秒，无限循环，自动往返 */
+    animation: drift 8s ease-in-out infinite alternate, fadeInPhoto 2s forwards;
+}
+
+@keyframes drift {
+    from { transform: translate(0, 0) rotate(-5deg); }
+    to { transform: translate(20px, 15px) rotate(5deg); }
+}
+
+@keyframes fadeInPhoto {
+    to { opacity: 1; }
+}
+.scattered-memory:active {
+    cursor: grabbing;
+    transform: scale(1.1);
+}
+.scattered-memory img {
+    width: 100%;
+    pointer-events: none; /* 防止干扰拖拽 */
+    filter: sepia(0.2);
+}
+    </style>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/",
+                "@tweenjs/tween.js": "https://unpkg.com/@tweenjs/tween.js@23.1.1/dist/tween.esm.js"
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <audio id="bgm" loop>
+        <source src="bgm.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="pop-sound">
+        <source src="pop.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="start-screen" class="story-screen">
+        <div id="nature-bg"></div> 
+        <div class="story-content">
+            <h1 class="story-title">Meow? Where am I...</h1>
+            <div class="story-text">
+                <p>My body feels so light, like I'm floating on air.</p>
+                <p>This is my home... but why has the world lost its color?</p>
+                <p>My Human looks so sad. Before I leave for The Stars, I must pack our precious memories.</p>
+            </div>
+            <button class="start-btn" onclick="startGame()">Stretch & Go!</button>
+        </div>
+    </div>
+
+    <div id="end-screen" class="story-screen">
+        <div class="story-content">
+            <h1 class="story-title">Goodbye, My Best Friend</h1>
+            <div class="story-text">
+                <p>I found all our memories. The world is colorful again.</p>
+                <p>Don't cry. This little wooden box is my new spaceship. I'll be watching you from the stars.</p>
+                <p>Thank you for giving me such a warm home.</p>
+                <p style="color: #F39C12; margin-top: 30px; font-weight: bold;">"I will miss you, Meow."</p>
+            </div>
+            <button class="start-btn" onclick="location.reload()">The End</button>
+        </div>
+    </div>
+
+    <div id="loading">✨ Recovering Memories...</div>
+    <div id="toast">Message</div>
+    
+    <div id="theme-toggle" class="round-btn" onclick="toggleDayNight()">☀️</div>
+    <div id="sound-toggle" class="round-btn" onclick="toggleSound()">🔊</div>
+    
+    <div id="ui-container">
+        <button id="btn-1" class="btn active" onclick="tryGoToFloor(1)">🛋️ 1F Living</button>
+        <button id="btn-2" class="btn locked" onclick="tryGoToFloor(2)">🔒 2F Study</button>
+        <button id="btn-3" class="btn locked" onclick="tryGoToFloor(3)">🔒 3F Bedroom</button>
+        <button id="btn-4" class="btn locked" onclick="tryGoToFloor(4)">🔒 4F Attic</button>
+    </div>
+    <div id="inventory-sidebar"></div>
+
+    <div id="item-modal" class="modal-overlay">
+        <div class="modal-content polaroid-style">
+            <div class="photo-frame">
+                <img id="item-modal-img" src="" alt="Memory Photo">
+            </div>
+            <div class="text-container">
+                <h2 id="item-modal-title">Item Name</h2>
+                <p id="item-modal-desc">Description...</p>
+                <button id="modal-action-btn" class="confirm-btn" onclick="confirmCollectItem()">Put in Backpack</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+        import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+        import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
+        import * as TWEEN from '@tweenjs/tween.js';
+        
+        // --- Post Processing ---
+        import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+        import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+        import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
+        import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+
+        // --- Intro Background (Grass & Stars) ---
+        function createIntroBackground() {
+            const container = document.getElementById('nature-bg');
+            for(let i=0; i<30; i++) {
+                const star = document.createElement('div');
+                star.className = 'particle';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 80 + 10 + '%'; 
+                star.style.width = Math.random() * 3 + 1 + 'px';
+                star.style.height = star.style.width;
+                star.style.animationDuration = Math.random() * 5 + 3 + 's';
+                star.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(star);
+            }
+            const grassCount = Math.floor(window.innerWidth / 15);
+            for(let i=0; i<grassCount; i++) {
+                const blade = document.createElement('div');
+                blade.className = 'grass';
+                blade.style.left = (i * 15) + (Math.random()*10 - 5) + 'px';
+                blade.style.height = Math.random() * 40 + 30 + 'px'; 
+                blade.style.animationDuration = Math.random() * 2 + 2 + 's';
+                blade.style.animationDelay = Math.random() * 2 + 's';
+                container.appendChild(blade);
+            }
+        }
+        createIntroBackground();
+
+        // --- Core Variables ---
+        let currentLevel = 1;
+        let isNight = false;
+        let isMuted = false;
+        const collectedItems = new Set();
+        let pendingItemObj = null; 
+        let pendingItemName = null;
+        let isEnding = false; 
+
+        // --- Shader: Grayscale to Color (Warm & Fresh) ---
+        const GrayscaleShader = {
+            uniforms: { 'tDiffuse': { value: null }, 'amount': { value: 1.0 } },
+            vertexShader: `varying vec2 vUv; void main() { vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 ); }`,
+            fragmentShader: `
+                uniform sampler2D tDiffuse; uniform float amount; varying vec2 vUv; 
+                void main() { 
+                    vec4 color = texture2D( tDiffuse, vUv ); 
+                    vec3 gray = vec3( dot( color.rgb, vec3( 0.299, 0.587, 0.114 ) ) ); 
+                    // WARM FRESH LOOK: mix 60% color, add warm peach tint
+                    vec3 warmTint = vec3(1.05, 1.02, 0.95);
+                    vec3 freshColor = mix(gray, color.rgb * warmTint, 0.6) * 1.1; 
+                    vec3 finalColor = mix(freshColor, gray, amount);
+                    gl_FragColor = vec4( finalColor, color.a ); 
+                }`
+        };
+
+        // --- Shader: Film Grain / Noise ---
+        const NoiseShader = {
+            uniforms: {
+                'tDiffuse': { value: null },
+                'amount': { value: 0.15 }, // Start with high noise for B&W
+                'time': { value: 0.0 }
+            },
+            vertexShader: `varying vec2 vUv; void main() { vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 ); }`,
+            fragmentShader: `
+                uniform sampler2D tDiffuse;
+                uniform float amount;
+                uniform float time;
+                varying vec2 vUv;
+                float random(vec2 p) { 
+                    return fract(sin(dot(p.xy + time, vec2(12.9898,78.233))) * 43758.5453);
+                }
+                void main() {
+                    vec4 color = texture2D(tDiffuse, vUv);
+                    float noise = (random(vUv) - 0.5) * amount;
+                    color.rgb += noise;
+                    gl_FragColor = color;
+                }
+            `
+        };
+
+        // --- Item Data ---
+        const itemDetails = {
+            'Cloth': { img: 'images/cloth.jpg', icon: '🧶', title: 'Sofa Patch', desc: 'Hehe, I scratched the sofa here. You sighed but sewed this patch on. It feels the best to scratch!' },
+            'Food': { img: 'images/food.jpg', icon: '🥣', title: 'Leftover Kibble', desc: 'I left a few bites just for you, so you know I\'m not starving. Remember to eat your dinner!' },
+            'Key': { img: 'images/key.jpg', icon: '🔑', title: 'Jingling Keys', desc: 'Whenever I hear this sound, I know you\'re home! I always rush to the door to greet you.' },
+            'Toy': { img: 'images/toy.jpg', icon: '🧸', title: 'Chewed-up Mouse', desc: 'This is my trophy! It\'s the gaming partner you played with me for hours.' },
+            'Bookmark': { img: 'images/bookmark.jpg', icon: '🔖', title: 'Annoying Bookmark', desc: 'Hmph, whenever you look at books, you ignore me. I swat it away so you look at me instead.' },
+            'Mousepad': { img: 'images/mousepad.jpg', icon: '🖱️', title: 'Muddy Mousepad', desc: 'Gotcha! I stepped on this when you weren\'t looking. That\'s what you get for working too much.' },
+            'Can': { img: 'images/can.jpg', icon: '🥫', title: 'Premium Canned Food', desc: 'Wow! A hidden treasure! Every time I eat this, I feel like the happiest kitten in the world.' },
+            'Doll': { img: 'images/doll.jpg', icon: '🐈', title: 'Twin Plushie', desc: 'You sleep with this at night like you\'re holding me. Let it keep you company in my place.' },
+            'Collar': { img: 'images/collar.jpg', icon: '🎗️', title: 'Tiny Collar', desc: 'I was so small when I wore this. The bell rang all the time. It\'s proof that we met.' },
+            'Urn': { img: 'images/urn.jpg', icon: '✨', title: 'My Little Wooden Box', desc: 'It\'s so quiet and comfortable here... Am I going to sleep in this? Well then... Goodnight.' }
+        };
+
+        const levelConfig = {
+            1: { name: 'Level_1', required: ['Cloth', 'Food', 'Key', 'Toy'], nextBtn: 'btn-2' },
+            2: { name: 'Level_2', required: ['Bookmark', 'Mousepad', 'Can'], nextBtn: 'btn-3' },
+            3: { name: 'Level_3', required: ['Doll', 'Collar'], nextBtn: 'btn-4' },
+            4: { name: 'Level_4', required: ['Urn'], nextBtn: null }
+        };
+
+        // --- Scene Setup ---
+        const scene = new THREE.Scene();
+        const dayColor = new THREE.Color('#2c3e50'); 
+        const nightColor = new THREE.Color('#1a1a1a'); 
+        // Warm Colors for Ending
+        const warmDayColor = new THREE.Color('#f7eac8'); 
+        const warmSunColor = new THREE.Color('#ffddaa'); 
+
+        scene.background = dayColor;
+        scene.fog = new THREE.Fog(dayColor, 10, 50); 
+
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(11, 11, 18); 
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.; 
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        document.body.appendChild(renderer.domElement);
+
+        // --- Post Processing ---
+        const composer = new EffectComposer(renderer);
+        const renderPass = new RenderPass(scene, camera);
+        composer.addPass(renderPass);
+
+        // 1. Bloom Pass (Subtle)
+        const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.5, 0.4, 0.85);
+        bloomPass.threshold = 0.85; bloomPass.strength = 0.3; bloomPass.radius = 0.2;    
+        composer.addPass(bloomPass);
+
+        // 2. Grayscale Pass
+        const grayscalePass = new ShaderPass(GrayscaleShader);
+        grayscalePass.uniforms.amount.value = 1.0; 
+        composer.addPass(grayscalePass);
+
+        // 3. Noise Pass (Dynamic)
+        const noisePass = new ShaderPass(NoiseShader);
+        noisePass.uniforms.amount.value = 0.15; // Start high for B&W feel
+        composer.addPass(noisePass);
+
+        // --- Camera Controls ---
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true; controls.maxPolarAngle = Math.PI / 2 - 0.05; controls.enablePan = false;   
+        controls.enableZoom = true; controls.minDistance = 1.0; controls.maxDistance = 100.0; controls.rotateSpeed = 0.8;
+        controls.mouseButtons = { LEFT: THREE.MOUSE.ROTATE, MIDDLE: THREE.MOUSE.DOLLY, RIGHT: THREE.MOUSE.ROTATE }
+
+        // --- Visual State Manager (Color & Noise) ---
+        function updateVisualState(targetLevel) {
+            if (isEnding) return; 
+            const config = levelConfig[targetLevel];
+            const isComplete = config.required.every(item => collectedItems.has(item));
+            // Target: 0.0 (color) if complete, 1.0 (B&W) if not
+            const targetAmount = isComplete ? 0.0 : 1.0;
+            // Target Noise: 0.0 (clean) if complete, 0.15 (grainy) if not
+            const targetNoise = isComplete ? 0.0 : 0.15;
+
+            new TWEEN.Tween(grayscalePass.uniforms.amount).to({ value: targetAmount }, 1500).easing(TWEEN.Easing.Quadratic.Out).start();
+            new TWEEN.Tween(noisePass.uniforms.amount).to({ value: targetNoise }, 1500).easing(TWEEN.Easing.Quadratic.Out).start();
+        }
+
+        // --- Create Ground Base ---
+        function createGround() {
+            const geometry = new THREE.CircleGeometry(60, 64);
+            const material = new THREE.MeshStandardMaterial({ color: 0x0b1013, roughness: 1.0, metalness: 0.0, side: THREE.DoubleSide });
+            const ground = new THREE.Mesh(geometry, material);
+            ground.rotation.x = -Math.PI / 2; ground.position.y = -0.05; ground.receiveShadow = true; 
+            scene.add(ground);
+        }
+        createGround();
+
+        // --- Game Logic ---
+        window.startGame = function() {
+            const bgm = document.getElementById('bgm');
+            bgm.volume = 0.5; 
+            if (!isMuted) bgm.play().catch(e => console.log("Interaction needed to play audio"));
+            const screen = document.getElementById('start-screen');
+            screen.style.opacity = 0;
+            setTimeout(() => { screen.style.display = 'none'; }, 2000);
+            if (!isNight && rainSystem) rainSystem.visible = true;
+        }
+
+        window.toggleSound = function() {
+            isMuted = !isMuted;
+            const bgm = document.getElementById('bgm');
+            const pop = document.getElementById('pop-sound');
+            const btn = document.getElementById('sound-toggle');
+            if (isMuted) { btn.innerText = '🔇'; bgm.muted = true; pop.muted = true; } 
+            else { btn.innerText = '🔊'; bgm.muted = false; pop.muted = false; if (bgm.paused) bgm.play().catch(e => {}); }
+        }
+
+        // --- Weather Effects ---
+        let stars, rainSystem;
+        function createStars() {
+            const geometry = new THREE.BufferGeometry(); const vertices = [];
+            for (let i = 0; i < 1500; i++) { vertices.push(THREE.MathUtils.randFloatSpread(300)); vertices.push(THREE.MathUtils.randFloatSpread(300)); vertices.push(THREE.MathUtils.randFloatSpread(300)); }
+            geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+            const material = new THREE.PointsMaterial({ color: 0xFFFFFF, size: 0.4, transparent: true, opacity: 0.8 });
+            stars = new THREE.Points(geometry, material); stars.visible = false; scene.add(stars);
+        }
+        createStars();
+
+        function createRain() {
+            const geometry = new THREE.BufferGeometry(); const vertices = [];
+            for (let i = 0; i < 5000; i++) { vertices.push(THREE.MathUtils.randFloatSpread(200)); vertices.push(Math.random() * 150 + 50); vertices.push(THREE.MathUtils.randFloatSpread(200)); }
+            geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+            const material = new THREE.PointsMaterial({ color: 0xaaaaee, size: 0.5, transparent: true, opacity: 0.6 });
+            rainSystem = new THREE.Points(geometry, material); rainSystem.visible = false; scene.add(rainSystem);
+        }
+        createRain();
+
+        function animateRain() {
+            if (!rainSystem || !rainSystem.visible) return;
+            const positions = rainSystem.geometry.attributes.position.array;
+            for (let i = 1; i < positions.length; i += 3) { positions[i] -= 2.0; if (positions[i] < -20) { positions[i] = 150; } }
+            rainSystem.geometry.attributes.position.needsUpdate = true;
+        }
+
+        // --- Lighting (Soft, Warm, Low Contrast) ---
+        // Very strong, creamy/warm ambient light to fill shadows and lower contrast
+        const ambientLight = new THREE.HemisphereLight(0xfff5e6, 0x8d7c6a, 2.0);
+        scene.add(ambientLight);
+        // Weaker, warm directional light for soft shadows
+        const sunLight = new THREE.DirectionalLight(0xffdfba, 1.0);
+        sunLight.position.set(8, 15, 8); sunLight.castShadow = true;
+        sunLight.shadow.mapSize.set(2048, 2048); sunLight.shadow.bias = -0.0001; sunLight.shadow.radius = 4; // Softer shadows
+        scene.add(sunLight);
+
+        new RGBELoader().load('https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/royal_esplanade_1k.hdr', (texture) => {
+            texture.mapping = THREE.EquirectangularReflectionMapping;
+            scene.environment = texture; 
+            scene.environmentIntensity = 0.2; // Low environment reflection
+        });
+
+        // --- Model Loading & Material Overrides ---
+        let modelScene;
+        const viewAnchors = {}; const raycaster = new THREE.Raycaster(); const pointer = new THREE.Vector2();
+        const pickableObjects = []; const lampLights = []; const loader = new GLTFLoader();
+        loader.load('model.glb', (gltf) => {
+            modelScene = gltf.scene;
+            const box = new THREE.Box3().setFromObject(modelScene); const size = box.getSize(new THREE.Vector3());
+            const scale = 8 / Math.max(size.x, size.y, size.z); modelScene.scale.set(scale, scale, scale);
+            modelScene.position.y = 0; modelScene.updateMatrixWorld(true);
+            modelScene.traverse((child) => {
+                if (child.name.includes('View_')) { const worldPos = new THREE.Vector3(); child.getWorldPosition(worldPos); viewAnchors[child.name] = worldPos; child.visible = false; return; }
+                if (child.isMesh) {
+                    child.castShadow = true; child.receiveShadow = true;
+                    
+                    if (child.name.includes('Glass')) { 
+                        child.material = new THREE.MeshPhysicalMaterial({ color: 0xffffff, metalness: 0, roughness: 0.05, transmission: 0.98, thickness: 1.5, transparent: true, opacity: 1, envMapIntensity: 1.5 }); 
+                    }
+                    else if (child.name.includes('Light_')) { 
+                        child.material = new THREE.MeshStandardMaterial({ color: 0xFFFFFF, emissive: 0xFFFFFF, emissiveIntensity: 0.0, roughness: 0.3 }); 
+                        const lamp = new THREE.PointLight(0xFFFFFF, 0, 6); lamp.castShadow = true; lamp.position.set(0, -0.2, 0); child.add(lamp); lampLights.push({ mesh: child, light: lamp, intensity: 2.0 }); 
+                    }
+                    else if (child.name.includes('Pickable_')) { 
+                        child.userData.localStartY = child.position.y; child.userData.floatPhase = Math.random() * Math.PI * 2; 
+                        // Matte pickables
+                        child.material = new THREE.MeshStandardMaterial({ color: 0xffffff, emissive: 0xcccccc, emissiveIntensity: 1.0, roughness: 0.9, metalness: 0.0 }); 
+                        pickableObjects.push(child); 
+                    }
+                    else { 
+                        // Global Matte Override for everything else
+                        if (child.material) { 
+                            child.material.roughness = 0.9; // Very high roughness = low specularity
+                            child.material.metalness = 0.0;
+                            child.material.envMapIntensity = 0.1;
+                        } 
+                    }
+                }
+            });
+            scene.add(modelScene); document.getElementById('loading').style.display = 'none';
+        });
+
+        window.tryGoToFloor = function(targetLevel) {
+            if (targetLevel <= currentLevel) { goToFloor(targetLevel); return; }
+            const prevLevelConfig = levelConfig[targetLevel - 1];
+            const missingItems = prevLevelConfig.required.filter(item => !collectedItems.has(item));
+            if (missingItems.length > 0) { showToast(`🔒 ${missingItems.length} more memories to find!`); } else { goToFloor(targetLevel); }
+        }
+
+        function goToFloor(level) {
+            const floorName = `Level_${level}`;
+            const targetFloor = modelScene.getObjectByName(floorName) || modelScene.children.find(c => c.name.includes(floorName));
+            updateVisualState(level);
+            if (level === 4 && !isNight) toggleDayNight(); 
+            currentLevel = level;
+            if (level === 4) {
+                let urn = null; modelScene.traverse(c => { if (c.name.includes('Urn') && c.name.includes('Pickable')) urn = c; });
+                if (urn) {
+                    const box = new THREE.Box3().setFromObject(urn); const center = box.getCenter(new THREE.Vector3());
+                    const targetPos = center.clone().add(new THREE.Vector3(1.2, 1.2, 1.2));
+                    new TWEEN.Tween(camera.position).to(targetPos, 2000).easing(TWEEN.Easing.Cubic.InOut).start();
+                    new TWEEN.Tween(controls.target).to(center, 2000).easing(TWEEN.Easing.Cubic.InOut).start();
+                    return; 
+                }
+            }
+            const viewName = floorName.replace('Level', 'View'); const anchorKey = Object.keys(viewAnchors).find(k => k.includes(viewName));
+            if (targetFloor && viewAnchors[anchorKey]) {
+                let targetPos = viewAnchors[anchorKey]; let targetLookAt;
+                if (level === 2) { const mousepad = modelScene.getObjectByName('Pickable_Mousepad'); if (mousepad) { const box = new THREE.Box3().setFromObject(mousepad); targetLookAt = box.getCenter(new THREE.Vector3()); } else { const box = new THREE.Box3().setFromObject(targetFloor); targetLookAt = box.getCenter(new THREE.Vector3()); } } else { const box = new THREE.Box3().setFromObject(targetFloor); targetLookAt = box.getCenter(new THREE.Vector3()); }
+                new TWEEN.Tween(camera.position).to(targetPos, 2000).easing(TWEEN.Easing.Cubic.InOut).start();
+                new TWEEN.Tween(controls.target).to(targetLookAt, 2000).easing(TWEEN.Easing.Cubic.InOut).start();
+            }
+        }
+
+        function checkLevelComplete(level) {
+            const config = levelConfig[level]; const allFound = config.required.every(item => collectedItems.has(item));
+            if (allFound) {
+                if (currentLevel === level) { showToast(`✨ Memories are becoming clear...`); updateVisualState(level); }
+                const nextBtnId = config.nextBtn;
+                if (nextBtnId) {
+                    const btn = document.getElementById(nextBtnId); btn.classList.remove('locked'); btn.classList.add('active');
+                    let newIcon = '🔓'; if (nextBtnId === 'btn-2') newIcon = '📚'; if (nextBtnId === 'btn-3') newIcon = '🛏️'; if (nextBtnId === 'btn-4') newIcon = '✨'; 
+                    btn.innerHTML = btn.innerHTML.replace('🔒', newIcon); setTimeout(() => { showToast(`✨ The way to the next floor is open!`); }, 1600);
+                }
+            }
+        }
+
+        function showToast(msg) { const toast = document.getElementById('toast'); toast.innerText = msg; toast.style.opacity = 1; setTimeout(() => { toast.style.opacity = 0; }, 3000); }
+        window.showItemModal = function(rawName, isInventory = false) {
+            const info = itemDetails[rawName]; if (!info) return;
+            const imgEl = document.getElementById('item-modal-img'); if (info.img) { imgEl.src = info.img; imgEl.style.display = 'block'; } else { imgEl.style.display = 'none'; }
+            document.getElementById('item-modal-title').innerText = info.title; document.getElementById('item-modal-desc').innerText = info.desc;
+            const btn = document.getElementById('modal-action-btn');
+            if (isInventory) { btn.innerText = "Close"; btn.onclick = function() { document.getElementById('item-modal').classList.remove('show'); }; } else { btn.innerText = "Put in Backpack"; btn.onclick = window.confirmCollectItem; }
+            document.getElementById('item-modal').classList.add('show');
+        }
+
+// 声明一个变量记录最后点击的位置
+let lastHitPoint = new THREE.Vector3();
+
+window.confirmCollectItem = function() {
+    if (!pendingItemObj || !pendingItemName) return;
+    
+    const pop = document.getElementById('pop-sound'); 
+    if(pop && !isMuted) { pop.currentTime = 0; pop.volume = 0.6; pop.play().catch(e => {}); }
+    
+    document.getElementById('item-modal').classList.remove('show');
+    
+    // 从场景移除物体
+    const targetObj = pendingItemObj;
+    const targetName = pendingItemName;
+    
+    pickableObjects.splice(pickableObjects.indexOf(targetObj), 1);
+    new TWEEN.Tween(targetObj.scale).to({x:0, y:0, z:0}, 300).easing(TWEEN.Easing.Back.In).onComplete(() => { 
+        targetObj.visible = false; 
+    }).start();
+
+    // 加入背包
+    collectedItems.add(targetName);
+    const sidebar = document.getElementById('inventory-sidebar'); 
+    const div = document.createElement('div'); 
+    div.className = 'item-slot'; 
+    div.innerText = itemDetails[targetName].icon; 
+    div.onclick = function() { window.showItemModal(targetName, true); }; 
+    sidebar.appendChild(div);
+
+    // --- 核心修复：如果是骨灰盒，延迟开启结局 ---
+    if (targetName === 'Urn') {
+        setTimeout(() => {
+            triggerWarmEnding(lastHitPoint); // 使用保存的点击位置
+        }, 800);
+    } else {
+        // 普通物品检查进度
+        let itemLevel = 0; 
+        for (let lvl in levelConfig) { 
+            if (levelConfig[lvl].required.includes(targetName)) { itemLevel = parseInt(lvl); break; } 
+        }
+        if (itemLevel > 0) checkLevelComplete(itemLevel);
+    }
+
+    pendingItemName = null;
+    pendingItemObj = null;
+}
+
+        window.addEventListener('mousemove', (event) => {
+            pointer.x = (event.clientX / window.innerWidth) * 2 - 1; pointer.y = -(event.clientY / window.innerHeight) * 2 + 1; raycaster.setFromCamera(pointer, camera);
+            if (!document.querySelector('.modal-overlay.show') && pickableObjects.length > 0) { const intersects = raycaster.intersectObjects(pickableObjects, false); document.body.style.cursor = intersects.length > 0 ? 'var(--cursor-pointer)' : 'var(--cursor-default)'; } else { if (!event.target.closest('button')) { document.body.style.cursor = 'var(--cursor-default)'; } }
+        });
+
+        
+      function triggerWarmEnding() {
+    isEnding = true;
+    collectedItems.add('Urn');
+    
+    // --- 原有的场景颜色切换逻辑保留 ---
+    if (isNight) toggleDayNight(); 
+    const warmAmbientColor = new THREE.Color('#fff5e6');
+    new TWEEN.Tween(scene.background).to(warmDayColor, 2000).start();
+    new TWEEN.Tween(sunLight).to({ intensity: 1.1 }, 2000).start();
+    new TWEEN.Tween(grayscalePass.uniforms.amount).to({ value: 0.0 }, 2000).start();
+    // ... 其他 Three.js 状态更新 ...
+
+    // --- 新增：生成可拖拽的线索图片 ---
+    const endScreen = document.getElementById('end-screen');
+    
+    collectedItems.forEach((itemName) => {
+        const info = itemDetails[itemName];
+        if (!info || !info.img) return;
+
+        const imgDiv = document.createElement('div');
+        imgDiv.className = 'scattered-memory';
+        
+        // 随机初始位置和角度
+        const randomX = Math.random() * (window.innerWidth - 150);
+        const randomY = Math.random() * (window.innerHeight - 150);
+        const randomRot = (Math.random() - 0.5) * 40;
+
+        imgDiv.style.left = `${randomX}px`;
+        imgDiv.style.top = `${randomY}px`;
+        imgDiv.style.transform = `rotate(${randomRot}deg)`;
+        
+        imgDiv.innerHTML = `<img src="${info.img}" alt="memory">`;
+        document.body.appendChild(imgDiv);
+
+        // 实现拖拽逻辑
+        makeDraggable(imgDiv);
+    });
+
+    // 显示结局屏幕
+    setTimeout(() => { 
+// 统一的结局触发逻辑
+function triggerWarmEnding(intersectPoint) {
+    if (isEnding) return;
+    isEnding = true;
+    
+    // 1. 3D 场景变暖
+    if (isNight) toggleDayNight(); 
+    new TWEEN.Tween(scene.background).to(warmDayColor, 3000).start();
+    new TWEEN.Tween(grayscalePass.uniforms.amount).to({ value: 0.0 }, 3000).start();
+
+    // 2. 将点击的 3D 坐标转为屏幕坐标
+    const vector = intersectPoint.clone().project(camera);
+    const startX = (vector.x + 1) / 2 * window.innerWidth;
+    const startY = -(vector.y - 1) / 2 * window.innerHeight;
+
+    // 3. 显示结局层
+    const endScreen = document.getElementById('end-screen');
+    endScreen.style.display = 'flex';
+    
+    setTimeout(() => {
+        endScreen.classList.add('show');
+        // 4. 文字显示 1.5 秒后照片开始迸发
+        setTimeout(() => {
+            generateScatteredMemories(startX, startY);
+        }, 1500);
+    }, 100);
+}
+
+function generateScatteredMemories(startX, startY) {
+    const safeZoneWidth = 700; // 这里的宽度加大，确保完全不挡住中间文字
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+
+    Array.from(collectedItems).forEach((itemName, index) => {
+        const info = itemDetails[itemName];
+        if (!info || !info.img) return;
+
+        const imgDiv = document.createElement('div');
+        imgDiv.className = 'scattered-memory';
+        
+        // 计算最终落点：避开中间区域
+        let targetX;
+        const isLeft = Math.random() > 0.5;
+        if (isLeft) {
+            targetX = 50 + Math.random() * (screenWidth / 2 - safeZoneWidth / 2 - 150);
+        } else {
+            targetX = (screenWidth / 2 + safeZoneWidth / 2 + 50) + Math.random() * (screenWidth / 2 - safeZoneWidth / 2 - 150);
+        }
+        const targetY = 80 + Math.random() * (screenHeight - 350);
+        const rot = (Math.random() - 0.5) * 30;
+
+        // 设置 CSS 变量供动画使用
+        imgDiv.style.setProperty('--startX', `${startX}px`);
+        imgDiv.style.setProperty('--startY', `${startY}px`);
+        imgDiv.style.setProperty('--targetX', `${targetX}px`);
+        imgDiv.style.setProperty('--targetY', `${targetY}px`);
+        imgDiv.style.setProperty('--rot', `${rot}deg`);
+        
+        // 增加出现的间隔，让它们像喷泉一样一张张出来
+        imgDiv.style.animationDelay = `${index * 0.5}s`; 
+        
+        imgDiv.innerHTML = `<img src="${info.img}" style="width:100%"><p style="color:#555;font-size:11px;margin-top:5px;text-align:center;font-family:serif;">${info.title}</p>`;
+        
+        document.body.appendChild(imgDiv);
+        makeDraggable(imgDiv);
+    });
+}
+
+        document.getElementById('end-screen').classList.add('show'); 
+    }, 2500);
+}
+
+// 简单的拖拽实现函数
+function makeDraggable(el) {
+    let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    
+    el.onmousedown = dragMouseDown;
+
+    function dragMouseDown(e) {
+        e.preventDefault();
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        document.onmouseup = closeDragElement;
+        document.onmousemove = elementDrag;
+        // 置顶当前拖拽的图片
+        el.style.zIndex = parseInt(el.style.zIndex || 10000) + 1;
+    }
+
+    function elementDrag(e) {
+        e.preventDefault();
+        pos1 = pos3 - e.clientX;
+        pos2 = pos4 - e.clientY;
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        el.style.top = (el.offsetTop - pos2) + "px";
+        el.style.left = (el.offsetLeft - pos1) + "px";
+    }
+
+    function closeDragElement() {
+        document.onmouseup = null;
+        document.onmousemove = null;
+    }
+}
+        window.addEventListener('click', (event) => {
+            if (event.target.closest('.btn') || event.target.closest('.round-btn') || event.target.closest('.modal-content')) return;
+            if (document.querySelector('.modal-overlay.show')) return;
+            raycaster.setFromCamera(pointer, camera);
+            if (pickableObjects.length > 0) {
+                const intersects = raycaster.intersectObjects(pickableObjects, false);
+                if (intersects.length > 0) {
+                    const pickedObj = intersects[0].object;
+                    const rawName = pickedObj.name.replace('Pickable_', '').split('.')[0]; 
+// 在点击监听的回调函数里
+if (rawName === 'Urn') {
+                // 1. 获取点击的 3D 坐标
+                const hitPoint = intersects[0].point;
+                
+                // 2. 先显示收集成功的弹窗（让用户点“收下了”）
+                pendingItemObj = pickedObj;
+                pendingItemName = rawName;
+                showItemModal(rawName, false); 
+                
+                // 3. 核心修改：重写弹窗按钮的点击事件，当点击“收下了”才触发结局
+                const modalBtn = document.querySelector('#item-modal .start-btn');
+                modalBtn.onclick = () => {
+                    closeModal(); // 关闭弹窗
+                    // 这里的 1000 是为了让弹窗消失后再开始动画，更自然
+                    setTimeout(() => {
+                        triggerWarmEnding(hitPoint); 
+                    }, 500);
+                };
+                return;
+            }
+                    
+                    pendingItemObj = pickedObj; pendingItemName = rawName;
+                    showItemModal(rawName, false); document.body.style.cursor = 'var(--cursor-default)';
+                }
+            }
+        });
+
+        
+        window.toggleDayNight = function() {
+            if (isEnding) return; 
+            isNight = !isNight; const btn = document.getElementById('theme-toggle');
+            if (isNight) {
+                btn.innerText = '🌙'; new TWEEN.Tween(scene.background).to(nightColor, 1500).start(); new TWEEN.Tween(scene.fog.color).to(nightColor, 1500).start(); new TWEEN.Tween(sunLight.color).to(new THREE.Color(0x888888), 1500).start(); new TWEEN.Tween(sunLight).to({ intensity: 0.3 }, 1500).start(); scene.environmentIntensity = 0.1; if (stars) stars.visible = true; if (rainSystem) rainSystem.visible = false; lampLights.forEach(item => { new TWEEN.Tween(item.light).to({ intensity: item.intensity }, 500).start(); item.mesh.material.emissiveIntensity = 1.0; });
+            } else {
+                btn.innerText = '☀️'; new TWEEN.Tween(scene.background).to(dayColor, 1500).start(); new TWEEN.Tween(scene.fog.color).to(dayColor, 1500).start(); new TWEEN.Tween(sunLight.color).to(new THREE.Color(0xffffff), 1500).start(); new TWEEN.Tween(sunLight).to({ intensity: 1.0 }, 1500).start(); scene.environmentIntensity = 0.2; if (stars) stars.visible = false; if (rainSystem) rainSystem.visible = true; lampLights.forEach(item => { new TWEEN.Tween(item.light).to({ intensity: 0 }, 500).start(); item.mesh.material.emissiveIntensity = 0.0; });
+            }
+        }
+
+        function animate(time) {
+            requestAnimationFrame(animate); TWEEN.update(time); controls.update();
+            if (pickableObjects.length > 0) { const t = time / 800; pickableObjects.forEach(obj => { if (obj.userData.localStartY !== undefined) { obj.position.y = obj.userData.localStartY + Math.sin(t + obj.userData.floatPhase) * 0.015; if (obj.material.emissiveIntensity !== undefined) { obj.material.emissiveIntensity = 2.0 + Math.sin(t * 3) * 0.5; } } }); }
+            if (stars && stars.visible) { stars.rotation.y += 0.0003; }
+            animateRain();
+            noisePass.uniforms.time.value = time * 0.0001;
+            composer.render();
+        }
+        animate();
+
+        window.addEventListener('resize', () => { camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); composer.setSize(window.innerWidth, window.innerHeight); });
+    </script>
+</body>
+</html>
