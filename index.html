@@ -451,6 +451,7 @@
         import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
         import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
         import * as TWEEN from '@tweenjs/tween.js';
+        import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
         
         // --- Post Processing ---
         import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
@@ -696,7 +697,13 @@
         // --- Model Loading & Material Overrides ---
         let modelScene;
         const viewAnchors = {}; const raycaster = new THREE.Raycaster(); const pointer = new THREE.Vector2();
-        const pickableObjects = []; const lampLights = []; const loader = new GLTFLoader();
+        const pickableObjects = []; const lampLights = []; const dracoLoader = new DRACOLoader();
+        // 设置解码器路径
+dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
+
+const loader = new GLTFLoader();
+// 告诉 GLTFLoader 使用这个解码器
+loader.setDRACOLoader(dracoLoader);
         loader.load('model.glb', (gltf) => {
             modelScene = gltf.scene;
             const box = new THREE.Box3().setFromObject(modelScene); const size = box.getSize(new THREE.Vector3());
@@ -1045,4 +1052,5 @@ if (rawName === 'Urn') {
         window.addEventListener('resize', () => { camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); composer.setSize(window.innerWidth, window.innerHeight); });
     </script>
 </body>
+
 </html>
