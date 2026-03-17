@@ -763,50 +763,70 @@ setTimeout(() => {
 
         // --- Model Loading & Material Overrides ---
         let modelScene;
-        const viewAnchors = {}; const raycaster = new THREE.Raycaster(); const pointer = new THREE.Vector2();
-        const pickableObjects = []; const lampLights = []; const loader = new GLTFLoader();
-        // 设置解码器路径
-dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
+        const viewAnchors = {}; 
+        const raycaster = new THREE.Raycaster(); 
+        const pointer = new THREE.Vector2();
+        const pickableObjects = []; 
+        const lampLights = []; 
 
-const loader = new GLTFLoader();
-// 告诉 GLTFLoader 使用这个解码器
-loader.setDRACOLoader(dracoLoader);
+        // 1. 先初始化 DRACO 解码器
+        const dracoLoader = new DRACOLoader();
+        dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
+
+        // 2. 初始化 GLTF 加载器并绑定解码器
+        const loader = new GLTFLoader();
+        loader.setDRACOLoader(dracoLoader);
+
+        // 3. 执行加载
         loader.load('model.glb', (gltf) => {
             modelScene = gltf.scene;
-            const box = new THREE.Box3().setFromObject(modelScene); const size = box.getSize(new THREE.Vector3());
-            const scale = 8 / Math.max(size.x, size.y, size.z); modelScene.scale.set(scale, scale, scale);
-            modelScene.position.y = 0; modelScene.updateMatrixWorld(true);
+            const box = new THREE.Box3().setFromObject(modelScene); 
+            const size = box.getSize(new THREE.Vector3());
+            const scale = 8 / Math.max(size.x, size.y, size.z); 
+            modelScene.scale.set(scale, scale, scale);
+            modelScene.position.y = 0; 
+            modelScene.updateMatrixWorld(true);
+
             modelScene.traverse((child) => {
-                if (child.name.includes('View_')) { const worldPos = new THREE.Vector3(); child.getWorldPosition(worldPos); viewAnchors[child.name] = worldPos; child.visible = false; return; }
+                if (child.name.includes('View_')) { 
+                    const worldPos = new THREE.Vector3(); 
+                    child.getWorldPosition(worldPos); 
+                    viewAnchors[child.name] = worldPos; 
+                    child.visible = false; 
+                    return; 
+                }
                 if (child.isMesh) {
-                    child.castShadow = true; child.receiveShadow = true;
+                    child.castShadow = true; 
+                    child.receiveShadow = true;
                     
                     if (child.name.includes('Glass')) { 
                         child.material = new THREE.MeshPhysicalMaterial({ color: 0xffffff, metalness: 0, roughness: 0.05, transmission: 0.98, thickness: 1.5, transparent: true, opacity: 1, envMapIntensity: 1.5 }); 
                     }
                     else if (child.name.includes('Light_')) { 
                         child.material = new THREE.MeshStandardMaterial({ color: 0xFFFFFF, emissive: 0xFFFFFF, emissiveIntensity: 0.0, roughness: 0.3 }); 
-                        const lamp = new THREE.PointLight(0xFFFFFF, 0, 6); lamp.castShadow = true; lamp.position.set(0, -0.2, 0); child.add(lamp); lampLights.push({ mesh: child, light: lamp, intensity: 2.0 }); 
+                        const lamp = new THREE.PointLight(0xFFFFFF, 0, 6); 
+                        lamp.castShadow = true; 
+                        lamp.position.set(0, -0.2, 0); 
+                        child.add(lamp); 
+                        lampLights.push({ mesh: child, light: lamp, intensity: 2.0 }); 
                     }
                     else if (child.name.includes('Pickable_')) { 
-                        child.userData.localStartY = child.position.y; child.userData.floatPhase = Math.random() * Math.PI * 2; 
-                        // Matte pickables
+                        child.userData.localStartY = child.position.y; 
+                        child.userData.floatPhase = Math.random() * Math.PI * 2; 
                         child.material = new THREE.MeshStandardMaterial({ color: 0xffffff, emissive: 0xcccccc, emissiveIntensity: 1.0, roughness: 0.9, metalness: 0.0 }); 
                         pickableObjects.push(child); 
                     }
-                    else { 
-                        // Global Matte Override for everything else
-                        if (child.material) { 
-                            child.material.roughness = 0.9; // Very high roughness = low specularity
-                            child.material.metalness = 0.0;
-                            child.material.envMapIntensity = 0.1;
-                        } 
-                    }
                 }
             });
-            scene.add(modelScene); document.getElementById('loading').style.display = 'none';
+            scene.add(modelScene); 
+            document.getElementById('loading').style.display = 'none';
+        }, 
+        (xhr) => { 
+            console.log((xhr.loaded / xhr.total * 100) + '% loaded'); 
+        },
+        (error) => { 
+            console.error('模型加载出错:', error); 
         });
-
         window.tryGoToFloor = function(targetLevel) {
             if (targetLevel <= currentLevel) { goToFloor(targetLevel); return; }
             const prevLevelConfig = levelConfig[targetLevel - 1];
