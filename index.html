@@ -5,27 +5,30 @@
     <title>Goodbye, My Kitten - Final Warm Memory</title>
     <style>
         /* --- 1. Global Settings & Fonts --- */
-        :root {
-            /* Custom Cursors - White Ghost Style */
-            --cursor-default: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path fill="%23FFFFFF" d="M10.5,2c-1.7,0-3,1.3-3,3s1.3,3,3,3s3-1.3,3-3S12.2,2,10.5,2z M21.5,2c-1.7,0-3,1.3-3,3s1.3,3,3,3s3-1.3,3-3 S23.2,2,21.5,2z M5.5,8C3.6,8,2,9.6,2,11.5s1.6,3.5,3.5,3.5S9,13.4,9,11.5S7.4,8,5.5,8z M26.5,8c-1.9,0-3.5,1.6-3.5,3.5 s1.6,3.5,3.5,3.5s3.5-1.6,3.5-3.5S28.4,8,26.5,8z M16,11c-4,0-7.5,3-8,7c-0.3,2.3,0.5,4.5,2,6c1.4,1.4,2.4,3.8,3.1,5.6 c0.3,0.9,1.3,1.4,2.2,1.1c0.4-0.1,0.8-0.4,1-0.8c0.1-0.3,0.6-1.6,1.6-3.7c0.5,1,1,1.6,1,1.7c0.3,0.7,1,1.2,1.8,1c0.8-0.1,1.4-0.8,1.4-1.6 c0-0.1-0.1-0.8-0.4-2.1c1.7-2.3,3.3-5,3.2-8.1C24.9,13.4,20.9,11,16,11z"/></svg>') 16 16, auto;
-            --cursor-pointer: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path fill="%23CCCCCC" d="M10.5,2c-1.7,0-3,1.3-3,3s1.3,3,3,3s3-1.3,3-3S12.2,2,10.5,2z M21.5,2c-1.7,0-3,1.3-3,3s1.3,3,3,3s3-1.3,3-3 S23.2,2,21.5,2z M5.5,8C3.6,8,2,9.6,2,11.5s1.6,3.5,3.5,3.5S9,13.4,9,11.5S7.4,8,5.5,8z M26.5,8c-1.9,0-3.5,1.6-3.5,3.5 s1.6,3.5,3.5,3.5s3.5-1.6,3.5-3.5S28.4,8,26.5,8z M16,11c-4,0-7.5,3-8,7c-0.3,2.3,0.5,4.5,2,6c1.4,1.4,2.4,3.8,3.1,5.6 c0.3,0.9,1.3,1.4,2.2,1.1c0.4-0.1,0.8-0.4,1-0.8c0.1-0.3,0.6-1.6,1.6-3.7c0.5,1,1,1.6,1,1.7c0.3,0.7,1,1.2,1.8,1c0.8-0.1,1.4-0.8,1.4-1.6 c0-0.1-0.1-0.8-0.4-2.1c1.7-2.3,3.3-5,3.2-8.1C24.9,13.4,20.9,11,16,11z"/></svg>') 16 16, pointer;
-            
-            --ui-bg: rgba(0, 0, 0, 0.4);
-            --ui-border: rgba(255, 255, 255, 0.3);
-            --ui-glow: rgba(255, 255, 255, 0.6);
-            --text-color: #eee;
-        }
+       :root {
+        /* 默认猫爪 32px，中心点 16 16 */
+        --cursor-small: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 640 640' fill='white'><path d='M298.5 156.9C312.8 199.8 298.2 243.1 265.9 253.7C233.6 264.3 195.8 238.1 181.5 195.2C167.2 152.3 181.8 109 214.1 98.4C246.4 87.8 284.2 114 298.5 156.9zM164.4 262.6C183.3 295 178.7 332.7 154.2 346.7C129.7 360.7 94.5 345.8 75.7 313.4C56.9 281 61.4 243.3 85.9 229.3C110.4 215.3 145.6 230.2 164.4 262.6zM133.2 465.2C185.6 323.9 278.7 288 320 288C361.3 288 454.4 323.9 506.8 465.2C510.4 474.9 512 485.3 512 495.7L512 497.3C512 523.1 491.1 544 465.3 544C453.8 544 442.4 542.6 431.3 539.8L343.3 517.8C328 514 312 514 296.7 517.8L208.7 539.8C197.6 542.6 186.2 544 174.7 544C148.9 544 128 523.1 128 497.3L128 495.7C128 485.3 129.6 474.9 133.2 465.2zM485.8 346.7C461.3 332.7 456.7 295 475.6 262.6C494.5 230.2 529.6 215.3 554.1 229.3C578.6 243.3 583.2 281 564.3 313.4C545.4 345.8 510.3 360.7 485.8 346.7zM374.1 253.7C341.8 243.1 327.2 199.8 341.5 156.9C355.8 114 393.6 87.8 425.9 98.4C458.2 109 472.8 152.3 458.5 195.2C444.2 238.1 406.4 264.3 374.1 253.7z'/></svg>") 16 16, auto;
+        
+        /* 悬停变大猫爪 48px，中心点 24 24 */
+        --cursor-large: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 640 640' fill='white'><path d='M298.5 156.9C312.8 199.8 298.2 243.1 265.9 253.7C233.6 264.3 195.8 238.1 181.5 195.2C167.2 152.3 181.8 109 214.1 98.4C246.4 87.8 284.2 114 298.5 156.9zM164.4 262.6C183.3 295 178.7 332.7 154.2 346.7C129.7 360.7 94.5 345.8 75.7 313.4C56.9 281 61.4 243.3 85.9 229.3C110.4 215.3 145.6 230.2 164.4 262.6zM133.2 465.2C185.6 323.9 278.7 288 320 288C361.3 288 454.4 323.9 506.8 465.2C510.4 474.9 512 485.3 512 495.7L512 497.3C512 523.1 491.1 544 465.3 544C453.8 544 442.4 542.6 431.3 539.8L343.3 517.8C328 514 312 514 296.7 517.8L208.7 539.8C197.6 542.6 186.2 544 174.7 544C148.9 544 128 523.1 128 497.3L128 495.7C128 485.3 129.6 474.9 133.2 465.2zM485.8 346.7C461.3 332.7 456.7 295 475.6 262.6C494.5 230.2 529.6 215.3 554.1 229.3C578.6 243.3 583.2 281 564.3 313.4C545.4 345.8 510.3 360.7 485.8 346.7zM374.1 253.7C341.8 243.1 327.2 199.8 341.5 156.9C355.8 114 393.6 87.8 425.9 98.4C458.2 109 472.8 152.3 458.5 195.2C444.2 238.1 406.4 264.3 374.1 253.7z'/></svg>") 24 24, auto;
+
+        --ui-bg: rgba(0, 0, 0, 0.4);
+        --ui-border: rgba(255, 255, 255, 0.3);
+        --ui-glow: rgba(255, 255, 255, 0.6);
+        --text-color: #eee;
+    }
 
         body { 
-            margin: 0; overflow: hidden; background-color: #1a1a1a; 
-            font-family: 'Courier New', Courier, monospace; 
-            cursor: var(--cursor-default);
-            user-select: none;
-        }
-        
-        button, .btn, #theme-toggle, #sound-toggle, .item-slot, .confirm-btn, .restart-btn, .start-btn {
-            cursor: var(--cursor-pointer) !important;
-        }
+        margin: 0; overflow: hidden; background-color: #1a1a1a; 
+        font-family: 'Courier New', Courier, monospace; 
+        cursor: var(--cursor-small); /* 默认小爪子 */
+        user-select: none;
+    }
+    
+    /* 所有的按钮悬停时也应用变大效果 */
+    button, .btn, #theme-toggle, #sound-toggle, .item-slot, .confirm-btn, .restart-btn, .start-btn {
+        cursor: var(--cursor-large) !important;
+    }
 
         /* --- 2. Story Screen (Nature Ambience) --- */
         .story-screen {
@@ -205,8 +208,7 @@
         }
         .round-btn:hover { border-color: #fff; box-shadow: 0 0 15px var(--ui-glow); text-shadow: 0 0 8px #fff; }
         
-        #theme-toggle { top: 30px; }
-        #sound-toggle { top: 85px; } 
+        #sound-toggle { top: 30px; }
 
         #ui-container {
             position: absolute; bottom: 40px; left: 30px;
@@ -243,12 +245,14 @@
             border: 1px solid var(--ui-border); border-top: 3px solid #fff; 
         }
         #inventory-sidebar::before { content: 'PACK'; font-size: 10px; color: #fff; opacity: 0.8; margin-bottom: 5px; letter-spacing: 1px; }
-        .item-slot {
-            width: 45px; height: 45px; background: rgba(255,255,255,0.05); 
-            border: 1px solid rgba(255,255,255,0.2);
-            display: flex; justify-content: center; align-items: center; font-size: 20px;
-            transition: transform 0.2s; animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
+       .item-slot {
+    width: 45px; height: 45px; background: rgba(255,255,255,0.05); 
+    border: 1px solid rgba(255,255,255,0.2);
+    display: flex; justify-content: center; align-items: center; 
+    /* font-size: 20px; 已经删掉 */
+    overflow: hidden; /* 确保圆角或图片边界整洁 */
+    transition: transform 0.2s; animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
         .item-slot:hover { 
             border-color: #fff; background: rgba(255,255,255,0.15);
             box-shadow: 0 0 10px var(--ui-glow); transform: scale(1.1);
@@ -384,6 +388,17 @@
     </script>
 </head>
 <body>
+    <div id="guide-overlay" style="
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    color: #fff; font-family: 'Courier New', monospace; text-align: center;
+    pointer-events: none; transition: opacity 1.5s ease; z-index: 100;
+    text-shadow: 0 0 15px rgba(0,0,0,0.8); opacity: 0; /* 初始透明，等待游戏开始 */
+">
+    <p style="font-size: 16px; letter-spacing: 2px; line-height: 1.6;">
+        Try dragging with your mouse to rotate the view...<br>
+        Find my favorite corner.
+    </p>
+</div>
 
     <audio id="bgm" loop>
         <source src="bgm.mp3" type="audio/mpeg">
@@ -421,14 +436,13 @@
     <div id="loading">✨ Recovering Memories...</div>
     <div id="toast">Message</div>
     
-    <div id="theme-toggle" class="round-btn" onclick="toggleDayNight()">☀️</div>
-    <div id="sound-toggle" class="round-btn" onclick="toggleSound()">🔊</div>
+     <div id="sound-toggle" class="round-btn" onclick="toggleSound()">BGM</div>
     
     <div id="ui-container">
-        <button id="btn-1" class="btn active" onclick="tryGoToFloor(1)">🛋️ 1F Living</button>
-        <button id="btn-2" class="btn locked" onclick="tryGoToFloor(2)">🔒 2F Study</button>
-        <button id="btn-3" class="btn locked" onclick="tryGoToFloor(3)">🔒 3F Bedroom</button>
-        <button id="btn-4" class="btn locked" onclick="tryGoToFloor(4)">🔒 4F Attic</button>
+        <button id="btn-1" class="btn active" onclick="tryGoToFloor(1)"> 1F Living</button>
+        <button id="btn-2" class="btn locked" onclick="tryGoToFloor(2)"> 2F Study</button>
+        <button id="btn-3" class="btn locked" onclick="tryGoToFloor(3)"> 3F Bedroom</button>
+        <button id="btn-4" class="btn locked" onclick="tryGoToFloor(4)"> 4F Attic</button>
     </div>
     <div id="inventory-sidebar"></div>
 
@@ -451,13 +465,20 @@
         import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
         import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
         import * as TWEEN from '@tweenjs/tween.js';
-        import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
         
         // --- Post Processing ---
         import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
         import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
         import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
         import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+
+        // --- 核心音效定义 ---
+// 确保文件名和你下载的一模一样，包括大小写
+const purrSound = new Audio('cat_purr.mp3'); 
+purrSound.loop = true; 
+
+const stepsSound = new Audio('cat_steps.mp3');
+stepsSound.volume = 0.3; // 初始音量调小一点，比较真实
 
         // --- Intro Background (Grass & Stars) ---
         function createIntroBackground() {
@@ -494,6 +515,7 @@
         let pendingItemObj = null; 
         let pendingItemName = null;
         let isEnding = false; 
+        let hasRotated = false; // 记录是否已经旋转过视角
 
         // --- Shader: Grayscale to Color (Warm & Fresh) ---
         const GrayscaleShader = {
@@ -539,15 +561,15 @@
 
         // --- Item Data ---
         const itemDetails = {
-            'Cloth': { img: 'images/cloth.jpg', icon: '🧶', title: 'Sofa Patch', desc: 'Hehe, I scratched the sofa here. You sighed but sewed this patch on. It feels the best to scratch!' },
-            'Food': { img: 'images/food.jpg', icon: '🥣', title: 'Leftover Kibble', desc: 'I left a few bites just for you, so you know I\'m not starving. Remember to eat your dinner!' },
-            'Key': { img: 'images/key.jpg', icon: '🔑', title: 'Jingling Keys', desc: 'Whenever I hear this sound, I know you\'re home! I always rush to the door to greet you.' },
-            'Toy': { img: 'images/toy.jpg', icon: '🧸', title: 'Chewed-up Mouse', desc: 'This is my trophy! It\'s the gaming partner you played with me for hours.' },
-            'Bookmark': { img: 'images/bookmark.jpg', icon: '🔖', title: 'Annoying Bookmark', desc: 'Hmph, whenever you look at books, you ignore me. I swat it away so you look at me instead.' },
-            'Mousepad': { img: 'images/mousepad.jpg', icon: '🖱️', title: 'Muddy Mousepad', desc: 'Gotcha! I stepped on this when you weren\'t looking. That\'s what you get for working too much.' },
-            'Can': { img: 'images/can.jpg', icon: '🥫', title: 'Premium Canned Food', desc: 'Wow! A hidden treasure! Every time I eat this, I feel like the happiest kitten in the world.' },
-            'Doll': { img: 'images/doll.jpg', icon: '🐈', title: 'Twin Plushie', desc: 'You sleep with this at night like you\'re holding me. Let it keep you company in my place.' },
-            'Collar': { img: 'images/collar.jpg', icon: '🎗️', title: 'Tiny Collar', desc: 'I was so small when I wore this. The bell rang all the time. It\'s proof that we met.' },
+            'Cloth': { img: 'images/cloth.jpg', iconImg: 'icons/cloth.png', icon: '🧶', title: 'Sofa Patch', desc: 'Hehe, I scratched the sofa here. You sighed but sewed this patch on. It feels the best to scratch!' },
+            'Food': { img: 'images/food.jpg', iconImg: 'icons/food.png', icon: '🥣', title: 'Leftover Kibble', desc: 'I left a few bites just for you, so you know I\'m not starving. Remember to eat your dinner!' },
+            'Key': { img: 'images/key.jpg', iconImg: 'icons/key.png', icon: '🔑', title: 'Jingling Keys', desc: 'Whenever I hear this sound, I know you\'re home! I always rush to the door to greet you.' },
+            'Toy': { img: 'images/toy.jpg', iconImg: 'icons/toy.png', icon: '🧸', title: 'Chewed-up Mouse', desc: 'This is my trophy! It\'s the gaming partner you played with me for hours.' },
+            'Bookmark': { img: 'images/bookmark.jpg', iconImg: 'icons/Bookmark.png', icon: '🔖', title: 'Annoying Bookmark', desc: 'Hmph, whenever you look at books, you ignore me. I swat it away so you look at me instead.' },
+            'Mousepad': { img: 'images/mousepad.jpg', iconImg: 'icons/mousepad.png',icon: '🖱️', title: 'Muddy Mousepad', desc: 'Gotcha! I stepped on this when you weren\'t looking. That\'s what you get for working too much.' },
+            'Can': { img: 'images/can.jpg', iconImg: 'icons/can.png', icon: '🥫', title: 'Premium Canned Food', desc: 'Wow! A hidden treasure! Every time I eat this, I feel like the happiest kitten in the world.' },
+            'Doll': { img: 'images/doll.jpg', iconImg: 'icons/doll.png', icon: '🐈', title: 'Twin Plushie', desc: 'You sleep with this at night like you\'re holding me. Let it keep you company in my place.' },
+            'Collar': { img: 'images/collar.jpg', iconImg: 'icons/collar.png',icon: '🎗️', title: 'Tiny Collar', desc: 'I was so small when I wore this. The bell rang all the time. It\'s proof that we met.' },
             'Urn': { img: 'images/urn.jpg', icon: '✨', title: 'My Little Wooden Box', desc: 'It\'s so quiet and comfortable here... Am I going to sleep in this? Well then... Goodnight.' }
         };
 
@@ -607,6 +629,32 @@
         controls.enableZoom = true; controls.minDistance = 1.0; controls.maxDistance = 100.0; controls.rotateSpeed = 0.8;
         controls.mouseButtons = { LEFT: THREE.MOUSE.ROTATE, MIDDLE: THREE.MOUSE.DOLLY, RIGHT: THREE.MOUSE.ROTATE }
 
+        // 新增：拖动时的脚步声音效
+controls.addEventListener('start', () => {
+    if (!isEnding) {
+        stepsSound.loop = true;
+        stepsSound.play().catch(e => {});
+    }
+});
+// 监听视角转动
+controls.addEventListener('start', function() {
+    if (!hasRotated) {
+        hasRotated = true;
+        // 隐藏文字
+        const overlay = document.getElementById('guide-overlay');
+        if(overlay) {
+            overlay.style.opacity = 0;
+            setTimeout(() => overlay.remove(), 1500);
+        }
+        // 提示：第一个目标（Sofa Patch / Cloth）在下一阶段会获得特殊光效
+    }
+});
+
+controls.addEventListener('end', () => {
+    stepsSound.pause();
+    stepsSound.currentTime = 0; // 停止后重置进度，确保下次从头播放
+});
+
         // --- Visual State Manager (Color & Noise) ---
         function updateVisualState(targetLevel) {
             if (isEnding) return; 
@@ -633,23 +681,41 @@
 
         // --- Game Logic ---
         window.startGame = function() {
+            // 游戏开始后，延迟一点点显示指引文字
+setTimeout(() => {
+    if(!hasRotated) document.getElementById('guide-overlay').style.opacity = 1;
+}, 3000);
+            // 激活音效权限（静音播放一下立即暂停）
+            purrSound.play().then(() => { purrSound.pause(); purrSound.volume = 0; }).catch(e => {});
+            stepsSound.play().then(() => { stepsSound.pause(); }).catch(e => {});
+            
             const bgm = document.getElementById('bgm');
             bgm.volume = 0.5; 
             if (!isMuted) bgm.play().catch(e => console.log("Interaction needed to play audio"));
+            
             const screen = document.getElementById('start-screen');
             screen.style.opacity = 0;
             setTimeout(() => { screen.style.display = 'none'; }, 2000);
             if (!isNight && rainSystem) rainSystem.visible = true;
+
+            // 新增：游戏开始时直接触发镜头移动到第一层的房间
+            goToFloor(1);
         }
 
         window.toggleSound = function() {
-            isMuted = !isMuted;
-            const bgm = document.getElementById('bgm');
-            const pop = document.getElementById('pop-sound');
-            const btn = document.getElementById('sound-toggle');
-            if (isMuted) { btn.innerText = '🔇'; bgm.muted = true; pop.muted = true; } 
-            else { btn.innerText = '🔊'; bgm.muted = false; pop.muted = false; if (bgm.paused) bgm.play().catch(e => {}); }
-        }
+    isMuted = !isMuted;
+    const bgm = document.getElementById('bgm');
+    const btn = document.getElementById('sound-toggle');
+    
+    if (isMuted) {
+        btn.innerText = 'OFF'; // 极简文字替代静音图标
+        bgm.muted = true;
+    } else {
+        btn.innerText = 'BGM'; // 极简文字替代声音图标
+        bgm.muted = false;
+        if (bgm.paused) bgm.play().catch(e => {});
+    }
+}
 
         // --- Weather Effects ---
         let stars, rainSystem;
@@ -697,13 +763,7 @@
         // --- Model Loading & Material Overrides ---
         let modelScene;
         const viewAnchors = {}; const raycaster = new THREE.Raycaster(); const pointer = new THREE.Vector2();
-        const pickableObjects = []; const lampLights = []; const dracoLoader = new DRACOLoader();
-        // 设置解码器路径
-dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
-
-const loader = new GLTFLoader();
-// 告诉 GLTFLoader 使用这个解码器
-loader.setDRACOLoader(dracoLoader);
+        const pickableObjects = []; const lampLights = []; const loader = new GLTFLoader();
         loader.load('model.glb', (gltf) => {
             modelScene = gltf.scene;
             const box = new THREE.Box3().setFromObject(modelScene); const size = box.getSize(new THREE.Vector3());
@@ -748,6 +808,10 @@ loader.setDRACOLoader(dracoLoader);
         }
 
         function goToFloor(level) {
+            // 播放一段短促的脚步声
+    stepsSound.loop = false; 
+    stepsSound.currentTime = 0;
+    stepsSound.play().catch(e => {});
             const floorName = `Level_${level}`;
             const targetFloor = modelScene.getObjectByName(floorName) || modelScene.children.find(c => c.name.includes(floorName));
             updateVisualState(level);
@@ -817,10 +881,21 @@ window.confirmCollectItem = function() {
 
     // 加入背包
     collectedItems.add(targetName);
-    const sidebar = document.getElementById('inventory-sidebar'); 
+   const sidebar = document.getElementById('inventory-sidebar'); 
     const div = document.createElement('div'); 
     div.className = 'item-slot'; 
-    div.innerText = itemDetails[targetName].icon; 
+    
+    // --- 新增的创建图片的逻辑 ---
+    const imgEl = document.createElement('img');
+    imgEl.src = itemDetails[targetName].iconImg; // 读取你刚才配置的 PNG 路径
+    imgEl.style.width = '70%';  // 控制图片在方块内的缩放大小
+    imgEl.style.height = '70%';
+    imgEl.style.objectFit = 'contain'; // 保证图片比例不拉伸
+    imgEl.style.pointerEvents = 'none'; // 防止图片遮挡 div 的点击事件
+    
+    div.appendChild(imgEl); // 把图片塞进方块里
+    // ----------------------------
+
     div.onclick = function() { window.showItemModal(targetName, true); }; 
     sidebar.appendChild(div);
 
@@ -842,10 +917,47 @@ window.confirmCollectItem = function() {
     pendingItemObj = null;
 }
 
-        window.addEventListener('mousemove', (event) => {
-            pointer.x = (event.clientX / window.innerWidth) * 2 - 1; pointer.y = -(event.clientY / window.innerHeight) * 2 + 1; raycaster.setFromCamera(pointer, camera);
-            if (!document.querySelector('.modal-overlay.show') && pickableObjects.length > 0) { const intersects = raycaster.intersectObjects(pickableObjects, false); document.body.style.cursor = intersects.length > 0 ? 'var(--cursor-pointer)' : 'var(--cursor-default)'; } else { if (!event.target.closest('button')) { document.body.style.cursor = 'var(--cursor-default)'; } }
-        });
+let hoveredObject = null; // 用于记录当前悬停的物体
+window.addEventListener('mousemove', (event) => {
+    pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
+    pointer.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    raycaster.setFromCamera(pointer, camera);
+
+    // 如果没有弹窗且有可交互物体
+    if (!document.querySelector('.modal-overlay.show') && pickableObjects.length > 0) {
+        const intersects = raycaster.intersectObjects(pickableObjects, false);
+        
+        if (intersects.length > 0) {
+            const obj = intersects[0].object;
+            
+            // 1. 鼠标变大
+            document.body.style.cursor = 'var(--cursor-large)';
+            
+            // 2. 物体变金色发光
+            if (hoveredObject !== obj) {
+                // 如果之前有悬停物体，先重置它
+                if (hoveredObject) {
+                    hoveredObject.material.emissive.setHex(0xcccccc); 
+                    hoveredObject.material.emissiveIntensity = 1.0;
+                }
+                // 设置当前物体为金色
+                hoveredObject = obj;
+                if (hoveredObject.material.emissive) {
+                    hoveredObject.material.emissive.setHex(0xFFD700); // 金色
+                    hoveredObject.material.emissiveIntensity = 4.0;   // 增强亮度
+                }
+            }
+        } else {
+            // 3. 恢复默认状态
+            document.body.style.cursor = 'var(--cursor-small)';
+            if (hoveredObject) {
+                hoveredObject.material.emissive.setHex(0xcccccc); // 恢复原色
+                hoveredObject.material.emissiveIntensity = 1.0;
+                hoveredObject = null;
+            }
+        }
+    }
+});
 
         
       function triggerWarmEnding() {
@@ -891,6 +1003,18 @@ window.confirmCollectItem = function() {
 // 统一的结局触发逻辑
 function triggerWarmEnding(intersectPoint) {
     if (isEnding) return;
+    // 播放并淡入呼噜声
+    purrSound.volume = 0;
+    purrSound.play();
+    let vol = 0;
+    const fadeIn = setInterval(() => {
+        if (vol < 0.5) {
+            vol += 0.05;
+            purrSound.volume = vol;
+        } else {
+            clearInterval(fadeIn);
+        }
+    }, 200);
     isEnding = true;
     
     // 1. 3D 场景变暖
@@ -1041,7 +1165,9 @@ if (rawName === 'Urn') {
 
         function animate(time) {
             requestAnimationFrame(animate); TWEEN.update(time); controls.update();
-            if (pickableObjects.length > 0) { const t = time / 800; pickableObjects.forEach(obj => { if (obj.userData.localStartY !== undefined) { obj.position.y = obj.userData.localStartY + Math.sin(t + obj.userData.floatPhase) * 0.015; if (obj.material.emissiveIntensity !== undefined) { obj.material.emissiveIntensity = 2.0 + Math.sin(t * 3) * 0.5; } } }); }
+            if (pickableObjects.length > 0) { const t = time / 800; pickableObjects.forEach(obj => { if (obj.userData.localStartY !== undefined) { obj.position.y = obj.userData.localStartY + Math.sin(t + obj.userData.floatPhase) * 0.015; 
+                if (obj.material.emissiveIntensity !== undefined) { obj.material.emissiveIntensity = 2.0 + Math.sin(t * 3) * 0.5; }
+             } }); }
             if (stars && stars.visible) { stars.rotation.y += 0.0003; }
             animateRain();
             noisePass.uniforms.time.value = time * 0.0001;
@@ -1052,5 +1178,4 @@ if (rawName === 'Urn') {
         window.addEventListener('resize', () => { camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); composer.setSize(window.innerWidth, window.innerHeight); });
     </script>
 </body>
-
 </html>
