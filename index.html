@@ -84,24 +84,73 @@
         #end-screen .start-btn { pointer-events: auto; }
     
         .scattered-memory {
-            position: absolute; width: 140px; padding: 10px 10px 25px 10px;
-            background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            z-index: 1000; opacity: 0; cursor: var(--cursor-pointer) !important;
-            animation: burstOut 3.5s cubic-bezier(0.16, 1, 0.3, 1) forwards, drift 8s ease-in-out infinite alternate 3.5s;
-            user-select: none;
-        }
-        .scattered-memory:active { cursor: grabbing; transform: scale(1.1) !important; }
-        .scattered-memory img { width: 100%; pointer-events: none; filter: sepia(0.2); }
-    
-        @keyframes burstOut {
-            0% { opacity: 0; transform: translate(var(--startX), var(--startY)) scale(0.2) rotate(0deg); }
-            20% { opacity: 1; }
-            100% { opacity: 1; transform: translate(var(--targetX), var(--targetY)) scale(1) rotate(var(--rot)); }
-        }
-        @keyframes drift {
-            from { transform: translate(var(--targetX), var(--targetY)) rotate(calc(var(--rot) - 5deg)); }
-            to { transform: translate(calc(var(--targetX) + 20px), calc(var(--targetY) + 15px)) rotate(calc(var(--rot) + 5deg)); }
-        }
+    position: fixed; /* 必须是 fixed 或 absolute */
+    width: 160px;
+    padding: 10px 10px 25px 10px;
+    background: #fff;
+    cursor: grab; /* 鼠标悬停时显示手型，提示可以抓取 */
+    pointer-events: auto; /* 确保可以被点击 */
+    /* 其他动画和阴影样式保持不变 */
+}
+
+.scattered-memory:active {
+    cursor: grabbing; /* 按下拖动时的手型 */
+}
+
+/* 定义淡入并带一点点放大的动画 */
+@keyframes fadeInPhoto {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+
+/* 1. 修改后的弹出动画：去掉 transform 的锁定 */
+@keyframes burstOut {
+    0% {
+        opacity: 0;
+        scale: 0.1;
+        top: var(--startY);
+        left: var(--startX);
+    }
+    100% {
+        opacity: 1;
+        scale: 1;
+        top: var(--targetY);
+        left: var(--targetX);
+    }
+}
+
+/* 2. 新增：上下微动的漂浮动画 */
+@keyframes float {
+    0%, 100% { margin-top: 0px; }
+    50% { margin-top: -15px; } /* 向上漂移 15 像素 */
+}
+
+.memory-photo {
+    /* ... 你现有的样式 ... */
+    position: absolute;
+    cursor: grab;
+    /* 应用弹出动画，结束后保持状态但不锁定 transform */
+    animation: burstOut 1s ease-out forwards;
+}
+
+/* 这是一个特殊的类，我们会在弹出动画结束后用 JS 加上它 */
+.is-floating {
+    animation: float 3s ease-in-out infinite;
+}
+
+.scattered-memory img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    pointer-events: none; /* 防止右键点击图片干扰拖拽 */
+}
     
         /* --- 3. UI Elements --- */
         .round-btn {
@@ -182,7 +231,54 @@
             color: #fff; font-size: 16px; letter-spacing: 3px; pointer-events: none; z-index: 5; text-transform: uppercase; animation: breathe 2s infinite;
         }
         @keyframes breathe { 0%,100%{opacity:0.5} 50%{opacity:1} }
+
+        /* 结尾图片卡片样式 */
+.scattered-memory {
+    position: absolute;
+    width: 120px;
+    padding: 8px;
+    background: #fff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    cursor: grab;
+    z-index: 10000; /* 确保在结尾屏幕之上 */
+    transform-origin: center;
+    user-select: none;
+    transition: transform 0.2s ease;
+}
+.scattered-memory {
+    position: absolute;
+    width: 140px;
+    padding: 10px 10px 25px 10px;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    z-index: 10000;
+    opacity: 0; /* 初始透明 */
+    pointer-events: auto;
+    cursor: var(--cursor-pointer) !important;
+    
+    /* 缓缓移动动画：漂浮 8 秒，无限循环，自动往返 */
+    animation: drift 8s ease-in-out infinite alternate, fadeInPhoto 2s forwards;
+}
+
+@keyframes drift {
+    from { transform: translate(0, 0) rotate(-5deg); }
+    to { transform: translate(20px, 15px) rotate(5deg); }
+}
+
+@keyframes fadeInPhoto {
+    to { opacity: 1; }
+}
+.scattered-memory:active {
+    cursor: grabbing;
+    transform: scale(1.1);
+}
+.scattered-memory img {
+    width: 100%;
+    pointer-events: none; /* 防止干扰拖拽 */
+    filter: sepia(0.2);
+}
     </style>
+
 
     <script type="importmap">
         {
@@ -255,7 +351,9 @@
             </div>
         </div>
     </div>
+    
 
+    
     <script type="module">
         import * as THREE from 'three';
         import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
@@ -616,31 +714,72 @@
         }
 
         function generateScatteredMemories(startX, startY) {
-            const screenW = window.innerWidth; const screenH = window.innerHeight;
-            Array.from(collectedItems).forEach((itemName, index) => {
-                const info = itemDetails[itemName]; if (!info || !info.img) return;
-                const imgDiv = document.createElement('div'); imgDiv.className = 'scattered-memory';
-                
-                const isLeft = Math.random() > 0.5;
-                const targetX = isLeft ? 50 + Math.random() * (screenW / 2 - 500) : (screenW / 2 + 350) + Math.random() * (screenW / 2 - 500);
-                const targetY = 80 + Math.random() * (screenH - 350); const rot = (Math.random() - 0.5) * 30;
+    const container = document.getElementById('memory-container');
+    container.style.display = 'block';
+    container.style.pointerEvents = 'none'; // 容器穿透，不遮挡按钮
 
-                imgDiv.style.setProperty('--startX', `${startX}px`); imgDiv.style.setProperty('--startY', `${startY}px`);
-                imgDiv.style.setProperty('--targetX', `${targetX}px`); imgDiv.style.setProperty('--targetY', `${targetY}px`);
-                imgDiv.style.setProperty('--rot', `${rot}deg`); imgDiv.style.animationDelay = `${index * 0.5}s`; 
-                imgDiv.innerHTML = `<img src="${info.img}" style="width:100%"><p style="color:#555;font-size:11px;margin-top:5px;text-align:center;font-family:serif;">${info.title}</p>`;
-                
-                document.body.appendChild(imgDiv); makeDraggable(imgDiv);
-            });
-        }
+    // 使用 Object.values 遍历对象
+    Object.values(itemDetails).forEach((item, index) => {
+        // 排除掉“小木盒”本身的图片，或者你希望它也显示
+        if (item.title === 'My Little Wooden Box') return;
+
+        const div = document.createElement('div');
+        div.className = 'scattered-memory';
+        
+        // 随机分布在屏幕上
+        const x = Math.random() * (window.innerWidth - 200) + 50; 
+        const y = Math.random() * (window.innerHeight - 250) + 50;
+        const rotation = (Math.random() - 0.5) * 40; 
+
+        div.style.left = x + 'px';
+        div.style.top = y + 'px';
+        div.style.transform = `rotate(${rotation}deg)`;
+        
+        // 增加一点弹出感：设置初始位置为盒子的位置（可选）
+        div.style.setProperty('--startX', startX + 'px');
+        div.style.setProperty('--startY', startY + 'px');
+        
+        // 延迟出现，形成撒落感
+        div.style.animationDelay = (index * 0.3) + 's';
+
+        const img = document.createElement('img');
+        img.src = item.img; 
+
+        // 提示：确保你的图片路径 'images/cloth.jpg' 等是真实存在的
+        div.appendChild(img);
+        container.appendChild(div);
+
+        // 允许点击照片看大图
+        div.style.pointerEvents = 'auto';
+        
+        makeDraggable(div);
+    });
+}
+
 
         function makeDraggable(el) {
-            let p1 = 0, p2 = 0, p3 = 0, p4 = 0; el.onmousedown = (e) => {
-                e.preventDefault(); p3 = e.clientX; p4 = e.clientY; el.style.zIndex = parseInt(el.style.zIndex || 10000) + 1;
-                document.onmouseup = () => { document.onmouseup = null; document.onmousemove = null; };
-                document.onmousemove = (e) => { e.preventDefault(); p1 = p3 - e.clientX; p2 = p4 - e.clientY; p3 = e.clientX; p4 = e.clientY; el.style.top = (el.offsetTop - p2) + "px"; el.style.left = (el.offsetLeft - p1) + "px"; };
-            };
-        }
+    let isDragging = false;
+    let offsetX, offsetY;
+
+    el.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        // 计算鼠标点击位置相对于照片左上角的偏移量
+        offsetX = e.clientX - el.offsetLeft;
+        offsetY = e.clientY - el.offsetTop;
+        el.style.zIndex = 30000; // 拖拽时让当前照片置顶
+    });
+
+    document.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        // 更新照片位置
+        el.style.left = (e.clientX - offsetX) + 'px';
+        el.style.top = (e.clientY - offsetY) + 'px';
+    });
+
+    document.addEventListener('mouseup', () => {
+        isDragging = false;
+    });
+}
 
         // --- Render Loop ---
         function animate(time) {
@@ -664,5 +803,6 @@
 
         window.addEventListener('resize', () => { camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); composer.setSize(window.innerWidth, window.innerHeight); });
     </script>
+    <div id="memory-container" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 20000; pointer-events: none;"></div>
 </body>
 </html>
