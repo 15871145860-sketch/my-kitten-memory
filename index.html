@@ -5,59 +5,46 @@
     <title>Goodbye, My Kitten - Final Warm Memory</title>
     <style>
         /* --- 1. Global Settings & Fonts --- */
-       :root {
-        /* 默认猫爪 32px，中心点 16 16 */
-        --cursor-small: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 640 640' fill='white'><path d='M298.5 156.9C312.8 199.8 298.2 243.1 265.9 253.7C233.6 264.3 195.8 238.1 181.5 195.2C167.2 152.3 181.8 109 214.1 98.4C246.4 87.8 284.2 114 298.5 156.9zM164.4 262.6C183.3 295 178.7 332.7 154.2 346.7C129.7 360.7 94.5 345.8 75.7 313.4C56.9 281 61.4 243.3 85.9 229.3C110.4 215.3 145.6 230.2 164.4 262.6zM133.2 465.2C185.6 323.9 278.7 288 320 288C361.3 288 454.4 323.9 506.8 465.2C510.4 474.9 512 485.3 512 495.7L512 497.3C512 523.1 491.1 544 465.3 544C453.8 544 442.4 542.6 431.3 539.8L343.3 517.8C328 514 312 514 296.7 517.8L208.7 539.8C197.6 542.6 186.2 544 174.7 544C148.9 544 128 523.1 128 497.3L128 495.7C128 485.3 129.6 474.9 133.2 465.2zM485.8 346.7C461.3 332.7 456.7 295 475.6 262.6C494.5 230.2 529.6 215.3 554.1 229.3C578.6 243.3 583.2 281 564.3 313.4C545.4 345.8 510.3 360.7 485.8 346.7zM374.1 253.7C341.8 243.1 327.2 199.8 341.5 156.9C355.8 114 393.6 87.8 425.9 98.4C458.2 109 472.8 152.3 458.5 195.2C444.2 238.1 406.4 264.3 374.1 253.7z'/></svg>") 16 16, auto;
-        
-        /* 悬停变大猫爪 48px，中心点 24 24 */
-        --cursor-large: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 640 640' fill='white'><path d='M298.5 156.9C312.8 199.8 298.2 243.1 265.9 253.7C233.6 264.3 195.8 238.1 181.5 195.2C167.2 152.3 181.8 109 214.1 98.4C246.4 87.8 284.2 114 298.5 156.9zM164.4 262.6C183.3 295 178.7 332.7 154.2 346.7C129.7 360.7 94.5 345.8 75.7 313.4C56.9 281 61.4 243.3 85.9 229.3C110.4 215.3 145.6 230.2 164.4 262.6zM133.2 465.2C185.6 323.9 278.7 288 320 288C361.3 288 454.4 323.9 506.8 465.2C510.4 474.9 512 485.3 512 495.7L512 497.3C512 523.1 491.1 544 465.3 544C453.8 544 442.4 542.6 431.3 539.8L343.3 517.8C328 514 312 514 296.7 517.8L208.7 539.8C197.6 542.6 186.2 544 174.7 544C148.9 544 128 523.1 128 497.3L128 495.7C128 485.3 129.6 474.9 133.2 465.2zM485.8 346.7C461.3 332.7 456.7 295 475.6 262.6C494.5 230.2 529.6 215.3 554.1 229.3C578.6 243.3 583.2 281 564.3 313.4C545.4 345.8 510.3 360.7 485.8 346.7zM374.1 253.7C341.8 243.1 327.2 199.8 341.5 156.9C355.8 114 393.6 87.8 425.9 98.4C458.2 109 472.8 152.3 458.5 195.2C444.2 238.1 406.4 264.3 374.1 253.7z'/></svg>") 24 24, auto;
-
-        --ui-bg: rgba(0, 0, 0, 0.4);
-        --ui-border: rgba(255, 255, 255, 0.3);
-        --ui-glow: rgba(255, 255, 255, 0.6);
-        --text-color: #eee;
-    }
-
-        body { 
-        margin: 0; overflow: hidden; background-color: #1a1a1a; 
-        font-family: 'Courier New', Courier, monospace; 
-        cursor: var(--cursor-small); /* 默认小爪子 */
-        user-select: none;
-    }
+        :root {
+            /* 默认小猫爪 32px (白色) */
+            --cursor-small: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 640 640' fill='white'><path d='M298.5 156.9C312.8 199.8 298.2 243.1 265.9 253.7C233.6 264.3 195.8 238.1 181.5 195.2C167.2 152.3 181.8 109 214.1 98.4C246.4 87.8 284.2 114 298.5 156.9zM164.4 262.6C183.3 295 178.7 332.7 154.2 346.7C129.7 360.7 94.5 345.8 75.7 313.4C56.9 281 61.4 243.3 85.9 229.3C110.4 215.3 145.6 230.2 164.4 262.6zM133.2 465.2C185.6 323.9 278.7 288 320 288C361.3 288 454.4 323.9 506.8 465.2C510.4 474.9 512 485.3 512 495.7L512 497.3C512 523.1 491.1 544 465.3 544C453.8 544 442.4 542.6 431.3 539.8L343.3 517.8C328 514 312 514 296.7 517.8L208.7 539.8C197.6 542.6 186.2 544 174.7 544C148.9 544 128 523.1 128 497.3L128 495.7C128 485.3 129.6 474.9 133.2 465.2zM485.8 346.7C461.3 332.7 456.7 295 475.6 262.6C494.5 230.2 529.6 215.3 554.1 229.3C578.6 243.3 583.2 281 564.3 313.4C545.4 345.8 510.3 360.7 485.8 346.7zM374.1 253.7C341.8 243.1 327.2 199.8 341.5 156.9C355.8 114 393.6 87.8 425.9 98.4C458.2 109 472.8 152.3 458.5 195.2C444.2 238.1 406.4 264.3 374.1 253.7z'/></svg>") 16 16, auto;
+            
+            /* 悬停大猫爪 48px (白色，用于按钮) */
+            --cursor-large: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 640 640' fill='white'><path d='M298.5 156.9C312.8 199.8 298.2 243.1 265.9 253.7C233.6 264.3 195.8 238.1 181.5 195.2C167.2 152.3 181.8 109 214.1 98.4C246.4 87.8 284.2 114 298.5 156.9zM164.4 262.6C183.3 295 178.7 332.7 154.2 346.7C129.7 360.7 94.5 345.8 75.7 313.4C56.9 281 61.4 243.3 85.9 229.3C110.4 215.3 145.6 230.2 164.4 262.6zM133.2 465.2C185.6 323.9 278.7 288 320 288C361.3 288 454.4 323.9 506.8 465.2C510.4 474.9 512 485.3 512 495.7L512 497.3C512 523.1 491.1 544 465.3 544C453.8 544 442.4 542.6 431.3 539.8L343.3 517.8C328 514 312 514 296.7 517.8L208.7 539.8C197.6 542.6 186.2 544 174.7 544C148.9 544 128 523.1 128 497.3L128 495.7C128 485.3 129.6 474.9 133.2 465.2zM485.8 346.7C461.3 332.7 456.7 295 475.6 262.6C494.5 230.2 529.6 215.3 554.1 229.3C578.6 243.3 583.2 281 564.3 313.4C545.4 345.8 510.3 360.7 485.8 346.7zM374.1 253.7C341.8 243.1 327.2 199.8 341.5 156.9C355.8 114 393.6 87.8 425.9 98.4C458.2 109 472.8 152.3 458.5 195.2C444.2 238.1 406.4 264.3 374.1 253.7z'/></svg>") 24 24, auto;
+            
+            /* 👇 新增：悬停大猫爪 48px (黑色，专门用于物品悬停) */
+            --cursor-large-black: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 640 640' fill='%23111111'><path d='M298.5 156.9C312.8 199.8 298.2 243.1 265.9 253.7C233.6 264.3 195.8 238.1 181.5 195.2C167.2 152.3 181.8 109 214.1 98.4C246.4 87.8 284.2 114 298.5 156.9zM164.4 262.6C183.3 295 178.7 332.7 154.2 346.7C129.7 360.7 94.5 345.8 75.7 313.4C56.9 281 61.4 243.3 85.9 229.3C110.4 215.3 145.6 230.2 164.4 262.6zM133.2 465.2C185.6 323.9 278.7 288 320 288C361.3 288 454.4 323.9 506.8 465.2C510.4 474.9 512 485.3 512 495.7L512 497.3C512 523.1 491.1 544 465.3 544C453.8 544 442.4 542.6 431.3 539.8L343.3 517.8C328 514 312 514 296.7 517.8L208.7 539.8C197.6 542.6 186.2 544 174.7 544C148.9 544 128 523.1 128 497.3L128 495.7C128 485.3 129.6 474.9 133.2 465.2zM485.8 346.7C461.3 332.7 456.7 295 475.6 262.6C494.5 230.2 529.6 215.3 554.1 229.3C578.6 243.3 583.2 281 564.3 313.4C545.4 345.8 510.3 360.7 485.8 346.7zM374.1 253.7C341.8 243.1 327.2 199.8 341.5 156.9C355.8 114 393.6 87.8 425.9 98.4C458.2 109 472.8 152.3 458.5 195.2C444.2 238.1 406.4 264.3 374.1 253.7z'/></svg>") 24 24, auto;
+        }
     
-    /* 所有的按钮悬停时也应用变大效果 */
-    button, .btn, #theme-toggle, #sound-toggle, .item-slot, .confirm-btn, .restart-btn, .start-btn {
-        cursor: var(--cursor-large) !important;
-    }
-
-        /* --- 2. Story Screen (Nature Ambience) --- */
+        body { 
+            margin: 0; overflow: hidden; background-color: #1a1a1a; 
+            font-family: 'Courier New', Courier, monospace; 
+            cursor: var(--cursor-small); 
+            user-select: none;
+        }
+        
+        button, .btn, #theme-toggle, #sound-toggle, .item-slot, .confirm-btn, .restart-btn, .start-btn {
+            cursor: var(--cursor-large) !important;
+        }
+    
+        /* --- 2. Story Screen --- */
         .story-screen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(to bottom, #020205 0%, #0a0f1e 60%, #111827 100%);
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            z-index: 9999; 
-            color: #ddd; 
-            text-align: center; padding: 40px; box-sizing: border-box;
-            transition: opacity 2s ease;
-            overflow: hidden;
+            z-index: 9999; color: #ddd; text-align: center; padding: 40px; box-sizing: border-box;
+            transition: opacity 2s ease; overflow: hidden;
         }
-
-        #nature-bg {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none; z-index: -1;
-        }
-
-        /* Animated Grass */
+    
+        #nature-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; }
+    
         .grass {
             position: absolute; bottom: 0; width: 2px; background: #000;
             border-radius: 50% 50% 0 0; transform-origin: bottom center;
             opacity: 0.6; animation: sway ease-in-out infinite;
         }
-        @keyframes sway {
-            0%, 100% { transform: rotate(4deg); } 50% { transform: rotate(-4deg); }
-        }
-
-        /* Floating Particles */
+        @keyframes sway { 0%, 100% { transform: rotate(4deg); } 50% { transform: rotate(-4deg); } }
+    
         .particle {
             position: absolute; background: #fff; border-radius: 50%;
             opacity: 0; animation: floatUp linear infinite;
@@ -67,17 +54,10 @@
             50% { opacity: 0.8; transform: translateY(-50px) scale(1.2); }
             100% { opacity: 0; transform: translateY(-100px) scale(0.5); }
         }
-
+    
         .story-content { max-width: 600px; line-height: 2; font-size: 16px; letter-spacing: 1px; z-index: 2; text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
         .story-title { font-size: 28px; margin-bottom: 30px; letter-spacing: 5px; color: #fff; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 20px;}
-        .story-text p { margin-bottom: 20px; opacity: 0; transform: translateY(20px); animation: fadeUp 1.5s forwards; }
-
-        .story-text p:nth-child(1) { animation-delay: 0.5s; }
-        .story-text p:nth-child(2) { animation-delay: 2.0s; }
-        .story-text p:nth-child(3) { animation-delay: 3.5s; }
-
-        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
-
+        
         .start-btn {
             margin-top: 50px; padding: 15px 50px;
             background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.5); color: #fff;
@@ -86,295 +66,122 @@
             transition: all 0.3s; backdrop-filter: blur(5px);
             box-shadow: 0 0 20px rgba(0,0,0,0.5);
         }
-        .start-btn:hover { 
-            background: #fff; color: #000; box-shadow: 0 0 30px rgba(255,255,255,0.6);
-        }
-
-/* 修改结局屏幕：让文字显示更柔和 */
-#end-screen {
-    background: rgba(0, 0, 0, 0.85); 
-    backdrop-filter: blur(10px);
-    z-index: 999;
-    display: none;
-    opacity: 0;
-    transition: opacity 3s ease; /* 3秒平滑进入 */
-}
-
-#end-screen.show {
-    display: flex;
-    opacity: 1;
-    pointer-events: auto;
-}
-
-/* 文字渐显动画 */
-.story-text p {
-    margin-bottom: 20px;
-    opacity: 0;
-    transform: translateY(10px);
-    animation: slowFadeUp 2.5s ease forwards;
-}
-@keyframes slowFadeUp {
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* 照片慢慢显现的样式 */
-.scattered-memory {
-    position: absolute;
-    width: 140px;
-    padding: 10px 10px 25px 10px;
-    background: #fff;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    z-index: 998; /* 确保在 end-screen 的文字层级(999)之下 */
-    opacity: 0;
-    cursor: pointer;
+        .start-btn:hover { background: #fff; color: #000; box-shadow: 0 0 30px rgba(255,255,255,0.6); }
     
-    /* 关键：使用迸发动画 */
-    left: 0; top: 0;
-    animation: burstOut 3.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@keyframes burstOut {
-    0% {
-        opacity: 0;
-        transform: translate(var(--startX), var(--startY)) scale(0.2) rotate(0deg);
-    }
-    20% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 1;
-        transform: translate(var(--targetX), var(--targetY)) scale(1) rotate(var(--rot));
-    }
-}
-
-/* 结局文字强制在最顶层 */
-#end-screen .story-content {
-    z-index: 1001; 
-    position: relative;
-    pointer-events: none; /* 穿透点击，方便抓取文字下的照片 */
-}
-
-@keyframes photoSlowFade {
-    0% { opacity: 0; transform: scale(0.9) rotate(var(--rot)); }
-    100% { opacity: 1; transform: scale(1) rotate(var(--rot)); }
-}
-
-#end-screen.show {
-    display: flex;
-    opacity: 1;
-    pointer-events: auto;
-}
-
-/* 结局文字内容：保持在最顶层且不拦截底部照片的拖拽 */
-#end-screen .story-content {
-    position: relative;
-    z-index: 1001; 
-    pointer-events: none; /* 允许鼠标穿透文字去点照片 */
-}
-
-/* 结局按钮：需要恢复点击 */
-#end-screen .start-btn {
-    pointer-events: auto;
-}
-
-/* 散落的照片：层级位于背景之上，文字之下 */
-.scattered-memory {
-    position: absolute;
-    width: 140px;
-    padding: 10px 10px 25px 10px;
-    background: #fff;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    z-index: 1000; /* 介于背景和文字 UI 之间 */
-    opacity: 0;
-    cursor: var(--cursor-pointer) !important;
-    animation: photoAppear 1s ease-out forwards;
-}
-
-@keyframes photoAppear {
-    from { opacity: 0; transform: scale(0.8) translateY(20px); }
-    to { opacity: 1; transform: scale(1) translateY(0) rotate(var(--rot)); }
-}
-
-        /* --- 3. UI Elements (White Cyberpunk) --- */
+        #end-screen { background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px); z-index: 999; display: none; opacity: 0; transition: opacity 3s ease; }
+        #end-screen.show { display: flex; opacity: 1; pointer-events: auto; }
         
+        #start-screen .story-text p { opacity: 0; transform: translateY(20px); animation: fadeUp 1.5s forwards; margin-bottom: 20px;}
+        #start-screen .story-text p:nth-child(1) { animation-delay: 0.5s; }
+        #start-screen .story-text p:nth-child(2) { animation-delay: 2.0s; }
+        #start-screen .story-text p:nth-child(3) { animation-delay: 3.5s; }
+    
+        #end-screen .story-text p { opacity: 0; transform: translateY(10px); animation: slowFadeUp 2.5s ease forwards; margin-bottom: 20px;}
+        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+        @keyframes slowFadeUp { to { opacity: 1; transform: translateY(0); } }
+    
+        #end-screen .story-content { position: relative; z-index: 1001; pointer-events: none; }
+        #end-screen .start-btn { pointer-events: auto; }
+    
+        .scattered-memory {
+            position: absolute; width: 140px; padding: 10px 10px 25px 10px;
+            background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            z-index: 1000; opacity: 0; cursor: var(--cursor-pointer) !important;
+            animation: burstOut 3.5s cubic-bezier(0.16, 1, 0.3, 1) forwards, drift 8s ease-in-out infinite alternate 3.5s;
+            user-select: none;
+        }
+        .scattered-memory:active { cursor: grabbing; transform: scale(1.1) !important; }
+        .scattered-memory img { width: 100%; pointer-events: none; filter: sepia(0.2); }
+    
+        @keyframes burstOut {
+            0% { opacity: 0; transform: translate(var(--startX), var(--startY)) scale(0.2) rotate(0deg); }
+            20% { opacity: 1; }
+            100% { opacity: 1; transform: translate(var(--targetX), var(--targetY)) scale(1) rotate(var(--rot)); }
+        }
+        @keyframes drift {
+            from { transform: translate(var(--targetX), var(--targetY)) rotate(calc(var(--rot) - 5deg)); }
+            to { transform: translate(calc(var(--targetX) + 20px), calc(var(--targetY) + 15px)) rotate(calc(var(--rot) + 5deg)); }
+        }
+    
+        /* --- 3. UI Elements --- */
         .round-btn {
-            position: absolute; left: 30px;
-            width: 44px; height: 44px; 
+            position: absolute; left: 30px; width: 44px; height: 44px; 
             background: var(--ui-bg); border: 1px solid var(--ui-border); backdrop-filter: blur(8px);
-            display: flex; justify-content: center; align-items: center;
-            font-size: 18px; color: var(--text-color);
-            z-index: 20; transition: all 0.3s ease;
-            clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);
+            display: flex; justify-content: center; align-items: center; font-size: 18px; color: var(--text-color);
+            z-index: 20; transition: all 0.3s ease; clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);
         }
         .round-btn:hover { border-color: #fff; box-shadow: 0 0 15px var(--ui-glow); text-shadow: 0 0 8px #fff; }
-        
-        #sound-toggle { top: 30px; }
-
-        #ui-container {
-            position: absolute; bottom: 40px; left: 30px;
-            display: flex; flex-direction: column; gap: 8px; z-index: 10;
-        }
+        #sound-toggle { top: 30px; font-size: 12px;}
+    
+        #ui-container { position: absolute; bottom: 40px; left: 30px; display: flex; flex-direction: column; gap: 8px; z-index: 10; }
         .btn {
-            background: var(--ui-bg); backdrop-filter: blur(8px);
-            border: 1px solid var(--ui-border); padding: 12px 20px; 
-            color: rgba(255,255,255,0.7); font-size: 12px; letter-spacing: 2px;
-            text-transform: uppercase; text-align: left; width: 180px; 
-            font-family: 'Courier New', monospace; transition: all 0.3s ease; 
-            position: relative; overflow: hidden;
+            background: var(--ui-bg); backdrop-filter: blur(8px); border: 1px solid var(--ui-border); padding: 12px 20px; 
+            color: rgba(255,255,255,0.7); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; text-align: left; width: 180px; 
+            font-family: 'Courier New', monospace; transition: all 0.3s ease; position: relative; overflow: hidden;
             clip-path: polygon(0 0, 95% 0, 100% 20%, 100% 100%, 5% 100%, 0 80%);
         }
-        .btn::before {
-            content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
-            background: transparent; transition: background 0.3s;
-        }
-        .btn:hover { 
-            color: #fff; border-color: rgba(255,255,255,0.8);
-            background: rgba(255,255,255,0.05); padding-left: 25px; 
-        }
-        .btn.active { 
-            color: #fff; border-color: #fff; background: rgba(255,255,255,0.1);
-            box-shadow: 0 0 15px rgba(255,255,255,0.2);
-        }
+        .btn::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: transparent; transition: background 0.3s; }
+        .btn:hover { color: #fff; border-color: rgba(255,255,255,0.8); background: rgba(255,255,255,0.05); padding-left: 25px; }
+        .btn.active { color: #fff; border-color: #fff; background: rgba(255,255,255,0.1); box-shadow: 0 0 15px rgba(255,255,255,0.2); }
         .btn.active::before { background: #fff; } 
         .btn.locked { color: #555; border-color: #333; cursor: not-allowed; background: rgba(0,0,0,0.6); }
         
         #inventory-sidebar {
             position: absolute; top: 30px; right: 30px; width: 70px; padding: 15px 0;
             min-height: 80px; display: flex; flex-direction: column; gap: 15px; align-items: center;
-            z-index: 10; background: var(--ui-bg); backdrop-filter: blur(8px);
-            border: 1px solid var(--ui-border); border-top: 3px solid #fff; 
+            z-index: 10; background: var(--ui-bg); backdrop-filter: blur(8px); border: 1px solid var(--ui-border); border-top: 3px solid #fff; 
         }
         #inventory-sidebar::before { content: 'PACK'; font-size: 10px; color: #fff; opacity: 0.8; margin-bottom: 5px; letter-spacing: 1px; }
-       .item-slot {
-    width: 45px; height: 45px; background: rgba(255,255,255,0.05); 
-    border: 1px solid rgba(255,255,255,0.2);
-    display: flex; justify-content: center; align-items: center; 
-    /* font-size: 20px; 已经删掉 */
-    overflow: hidden; /* 确保圆角或图片边界整洁 */
-    transition: transform 0.2s; animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-        .item-slot:hover { 
-            border-color: #fff; background: rgba(255,255,255,0.15);
-            box-shadow: 0 0 10px var(--ui-glow); transform: scale(1.1);
+        
+        .item-slot {
+            width: 45px; height: 45px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2);
+            display: flex; justify-content: center; align-items: center; overflow: hidden;
+            transition: transform 0.2s; animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
+        .item-slot:hover { border-color: #fff; background: rgba(255,255,255,0.15); box-shadow: 0 0 10px var(--ui-glow); transform: scale(1.1); }
         @keyframes popIn { 0% { transform: scale(0); } 100% { transform: scale(1); } }
-
+    
         /* --- 4. Polaroid Modal --- */
         .modal-overlay {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.6); 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); 
             display: flex; justify-content: center; align-items: center;
-            z-index: 100; opacity: 0; pointer-events: none; transition: opacity 0.5s ease;
-            backdrop-filter: blur(3px);
+            z-index: 100; opacity: 0; pointer-events: none; transition: opacity 0.5s ease; backdrop-filter: blur(3px);
         }
         .modal-overlay.show { opacity: 1; pointer-events: auto; }
         
         .modal-content.polaroid-style {
-            background: #fff; padding: 15px 15px 30px 15px;
-            border-radius: 2px; max-width: 360px; width: 90%; text-align: left;
-            box-shadow: 0 0 50px rgba(255,255,255,0.1); 
-            transform: rotate(-2deg) translateY(20px);
-            transition: transform 0.5s ease; position: relative;
+            background: #fff; padding: 15px 15px 30px 15px; border-radius: 2px; max-width: 360px; width: 90%; text-align: left;
+            box-shadow: 0 0 50px rgba(255,255,255,0.1); transform: rotate(-2deg) translateY(20px); transition: transform 0.5s ease; position: relative;
         }
         .modal-overlay.show .modal-content { transform: rotate(-2deg) translateY(0); }
-
+    
         .modal-content.polaroid-style::after {
             content: ''; position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
-            width: 100px; height: 30px; background: rgba(255,255,255,0.3);
-            backdrop-filter: blur(2px); border: 1px solid rgba(255,255,255,0.4);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            width: 100px; height: 30px; background: rgba(255,255,255,0.3); backdrop-filter: blur(2px); border: 1px solid rgba(255,255,255,0.4); box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-
-        .photo-frame {
-            width: 100%; height: 240px; background: #eee; margin-bottom: 20px;
-            overflow: hidden; border: 1px solid #ddd;
-        }
-        #item-modal-img {
-            width: 100%; height: 100%; object-fit: cover;
-            filter: sepia(0.2) contrast(1.1); 
-            display: none;
-        }
-
+    
+        .photo-frame { width: 100%; height: 240px; background: #eee; margin-bottom: 20px; overflow: hidden; border: 1px solid #ddd; }
+        #item-modal-img { width: 100%; height: 100%; object-fit: cover; filter: sepia(0.2) contrast(1.1); display: none; }
         .text-container { text-align: center; }
-        .modal-content h2 { 
-            color: #111; margin: 0 0 10px 0; 
-            font-family: 'Courier New', serif; font-size: 20px; letter-spacing: -1px;
-            border-bottom: 1px dashed #aaa; padding-bottom: 10px;
-        }
-        .modal-content p { 
-            color: #444; font-size: 13px; line-height: 1.6; 
-            font-family: 'Verdana', sans-serif; margin-bottom: 25px;
-        }
-
-        #item-modal-icon { display: none; }
-
+        .modal-content h2 { color: #111; margin: 0 0 10px 0; font-family: 'Courier New', serif; font-size: 20px; letter-spacing: -1px; border-bottom: 1px dashed #aaa; padding-bottom: 10px; }
+        .modal-content p { color: #444; font-size: 13px; line-height: 1.6; font-family: 'Verdana', sans-serif; margin-bottom: 25px; }
+    
         .confirm-btn {
-            background: #111; color: #fff; border: 1px solid #111; 
-            padding: 10px 30px; border-radius: 0; 
-            font-family: 'Courier New', monospace; font-weight: bold; text-transform: uppercase;
-            transition: all 0.2s; cursor: pointer;
+            background: #111; color: #fff; border: 1px solid #111; padding: 10px 30px; border-radius: 0; 
+            font-family: 'Courier New', monospace; font-weight: bold; text-transform: uppercase; transition: all 0.2s; cursor: pointer;
         }
         .confirm-btn:hover { background: #fff; color: #111; }
-
+    
         #toast {
             position: absolute; top: 15%; left: 50%; transform: translate(-50%, -50%);
-            background: rgba(0,0,0,0.8); border: 1px solid #fff; color: #fff; 
-            padding: 10px 30px; font-size: 14px; letter-spacing: 1px;
+            background: rgba(0,0,0,0.8); border: 1px solid #fff; color: #fff; padding: 10px 30px; font-size: 14px; letter-spacing: 1px;
             pointer-events: none; opacity: 0; transition: opacity 0.3s; z-index: 50; 
         }
         #loading {
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            color: #fff; font-size: 16px; letter-spacing: 3px; 
-            pointer-events: none; z-index: 5; text-transform: uppercase;
-            animation: breathe 2s infinite;
+            color: #fff; font-size: 16px; letter-spacing: 3px; pointer-events: none; z-index: 5; text-transform: uppercase; animation: breathe 2s infinite;
         }
         @keyframes breathe { 0%,100%{opacity:0.5} 50%{opacity:1} }
-
-        /* 结尾图片卡片样式 */
-.scattered-memory {
-    position: absolute;
-    width: 120px;
-    padding: 8px;
-    background: #fff;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    cursor: grab;
-    z-index: 10000; /* 确保在结尾屏幕之上 */
-    transform-origin: center;
-    user-select: none;
-    transition: transform 0.2s ease;
-}
-.scattered-memory {
-    position: absolute;
-    width: 140px;
-    padding: 10px 10px 25px 10px;
-    background: #fff;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    z-index: 10000;
-    opacity: 0; /* 初始透明 */
-    pointer-events: auto;
-    cursor: var(--cursor-pointer) !important;
-    
-    /* 缓缓移动动画：漂浮 8 秒，无限循环，自动往返 */
-    animation: drift 8s ease-in-out infinite alternate, fadeInPhoto 2s forwards;
-}
-
-@keyframes drift {
-    from { transform: translate(0, 0) rotate(-5deg); }
-    to { transform: translate(20px, 15px) rotate(5deg); }
-}
-
-@keyframes fadeInPhoto {
-    to { opacity: 1; }
-}
-.scattered-memory:active {
-    cursor: grabbing;
-    transform: scale(1.1);
-}
-.scattered-memory img {
-    width: 100%;
-    pointer-events: none; /* 防止干扰拖拽 */
-    filter: sepia(0.2);
-}
     </style>
 
     <script type="importmap">
@@ -388,24 +195,15 @@
     </script>
 </head>
 <body>
-    <div id="guide-overlay" style="
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-    color: #fff; font-family: 'Courier New', monospace; text-align: center;
-    pointer-events: none; transition: opacity 1.5s ease; z-index: 100;
-    text-shadow: 0 0 15px rgba(0,0,0,0.8); opacity: 0; /* 初始透明，等待游戏开始 */
-">
-    <p style="font-size: 16px; letter-spacing: 2px; line-height: 1.6;">
-        Try dragging with your mouse to rotate the view...<br>
-        Find my favorite corner.
-    </p>
-</div>
+    <div id="guide-overlay" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; font-family: 'Courier New', monospace; text-align: center; pointer-events: none; transition: opacity 1.5s ease; z-index: 100; text-shadow: 0 0 15px rgba(0,0,0,0.8); opacity: 0;">
+        <p style="font-size: 16px; letter-spacing: 2px; line-height: 1.6;">
+            Try dragging with your mouse to rotate the view...<br>
+            Find my favorite corner.
+        </p>
+    </div>
 
-    <audio id="bgm" loop>
-        <source src="bgm.mp3" type="audio/mpeg">
-    </audio>
-    <audio id="pop-sound">
-        <source src="pop.mp3" type="audio/mpeg">
-    </audio>
+    <audio id="bgm" loop><source src="bgm.mp3" type="audio/mpeg"></audio>
+    <audio id="pop-sound"><source src="pop.mp3" type="audio/mpeg"></audio>
 
     <div id="start-screen" class="story-screen">
         <div id="nature-bg"></div> 
@@ -435,8 +233,7 @@
 
     <div id="loading">✨ Recovering Memories...</div>
     <div id="toast">Message</div>
-    
-     <div id="sound-toggle" class="round-btn" onclick="toggleSound()">BGM</div>
+    <div id="sound-toggle" class="round-btn" onclick="toggleSound()">BGM</div>
     
     <div id="ui-container">
         <button id="btn-1" class="btn active" onclick="tryGoToFloor(1)"> 1F Living</button>
@@ -466,47 +263,14 @@
         import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
         import * as TWEEN from '@tweenjs/tween.js';
         import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
-        
-        // --- Post Processing ---
         import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
         import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
         import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
         import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 
-        // --- 核心音效定义 ---
-// 确保文件名和你下载的一模一样，包括大小写
-const purrSound = new Audio('cat_purr.mp3'); 
-purrSound.loop = true; 
-
-const stepsSound = new Audio('cat_steps.mp3');
-stepsSound.volume = 0.3; // 初始音量调小一点，比较真实
-
-        // --- Intro Background (Grass & Stars) ---
-        function createIntroBackground() {
-            const container = document.getElementById('nature-bg');
-            for(let i=0; i<30; i++) {
-                const star = document.createElement('div');
-                star.className = 'particle';
-                star.style.left = Math.random() * 100 + '%';
-                star.style.top = Math.random() * 80 + 10 + '%'; 
-                star.style.width = Math.random() * 3 + 1 + 'px';
-                star.style.height = star.style.width;
-                star.style.animationDuration = Math.random() * 5 + 3 + 's';
-                star.style.animationDelay = Math.random() * 5 + 's';
-                container.appendChild(star);
-            }
-            const grassCount = Math.floor(window.innerWidth / 15);
-            for(let i=0; i<grassCount; i++) {
-                const blade = document.createElement('div');
-                blade.className = 'grass';
-                blade.style.left = (i * 15) + (Math.random()*10 - 5) + 'px';
-                blade.style.height = Math.random() * 40 + 30 + 'px'; 
-                blade.style.animationDuration = Math.random() * 2 + 2 + 's';
-                blade.style.animationDelay = Math.random() * 2 + 's';
-                container.appendChild(blade);
-            }
-        }
-        createIntroBackground();
+        // --- Core Audio ---
+        const purrSound = new Audio('cat_purr.mp3'); purrSound.loop = true; 
+        const stepsSound = new Audio('cat_steps.mp3'); stepsSound.volume = 0.3; 
 
         // --- Core Variables ---
         let currentLevel = 1;
@@ -516,9 +280,30 @@ stepsSound.volume = 0.3; // 初始音量调小一点，比较真实
         let pendingItemObj = null; 
         let pendingItemName = null;
         let isEnding = false; 
-        let hasRotated = false; // 记录是否已经旋转过视角
+        let hasRotated = false; 
+        let lastHitPoint = new THREE.Vector3();
 
-        // --- Shader: Grayscale to Color (Warm & Fresh) ---
+        // --- Intro Background ---
+        function createIntroBackground() {
+            const container = document.getElementById('nature-bg');
+            for(let i=0; i<30; i++) {
+                const star = document.createElement('div'); star.className = 'particle';
+                star.style.left = Math.random() * 100 + '%'; star.style.top = Math.random() * 80 + 10 + '%'; 
+                star.style.width = Math.random() * 3 + 1 + 'px'; star.style.height = star.style.width;
+                star.style.animationDuration = Math.random() * 5 + 3 + 's'; star.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(star);
+            }
+            const grassCount = Math.floor(window.innerWidth / 15);
+            for(let i=0; i<grassCount; i++) {
+                const blade = document.createElement('div'); blade.className = 'grass';
+                blade.style.left = (i * 15) + (Math.random()*10 - 5) + 'px'; blade.style.height = Math.random() * 40 + 30 + 'px'; 
+                blade.style.animationDuration = Math.random() * 2 + 2 + 's'; blade.style.animationDelay = Math.random() * 2 + 's';
+                container.appendChild(blade);
+            }
+        }
+        createIntroBackground();
+
+        // --- Shaders ---
         const GrayscaleShader = {
             uniforms: { 'tDiffuse': { value: null }, 'amount': { value: 1.0 } },
             vertexShader: `varying vec2 vUv; void main() { vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 ); }`,
@@ -527,7 +312,6 @@ stepsSound.volume = 0.3; // 初始音量调小一点，比较真实
                 void main() { 
                     vec4 color = texture2D( tDiffuse, vUv ); 
                     vec3 gray = vec3( dot( color.rgb, vec3( 0.299, 0.587, 0.114 ) ) ); 
-                    // WARM FRESH LOOK: mix 60% color, add warm peach tint
                     vec3 warmTint = vec3(1.05, 1.02, 0.95);
                     vec3 freshColor = mix(gray, color.rgb * warmTint, 0.6) * 1.1; 
                     vec3 finalColor = mix(freshColor, gray, amount);
@@ -535,43 +319,32 @@ stepsSound.volume = 0.3; // 初始音量调小一点，比较真实
                 }`
         };
 
-        // --- Shader: Film Grain / Noise ---
         const NoiseShader = {
-            uniforms: {
-                'tDiffuse': { value: null },
-                'amount': { value: 0.15 }, // Start with high noise for B&W
-                'time': { value: 0.0 }
-            },
+            uniforms: { 'tDiffuse': { value: null }, 'amount': { value: 0.15 }, 'time': { value: 0.0 } },
             vertexShader: `varying vec2 vUv; void main() { vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 ); }`,
             fragmentShader: `
-                uniform sampler2D tDiffuse;
-                uniform float amount;
-                uniform float time;
-                varying vec2 vUv;
-                float random(vec2 p) { 
-                    return fract(sin(dot(p.xy + time, vec2(12.9898,78.233))) * 43758.5453);
-                }
+                uniform sampler2D tDiffuse; uniform float amount; uniform float time; varying vec2 vUv;
+                float random(vec2 p) { return fract(sin(dot(p.xy + time, vec2(12.9898,78.233))) * 43758.5453); }
                 void main() {
                     vec4 color = texture2D(tDiffuse, vUv);
                     float noise = (random(vUv) - 0.5) * amount;
                     color.rgb += noise;
                     gl_FragColor = color;
-                }
-            `
+                }`
         };
 
         // --- Item Data ---
         const itemDetails = {
-            'Cloth': { img: 'images/cloth.jpg', iconImg: 'icons/cloth.png', icon: '🧶', title: 'Sofa Patch', desc: 'Hehe, I scratched the sofa here. You sighed but sewed this patch on. It feels the best to scratch!' },
-            'Food': { img: 'images/food.jpg', iconImg: 'icons/food.png', icon: '🥣', title: 'Leftover Kibble', desc: 'I left a few bites just for you, so you know I\'m not starving. Remember to eat your dinner!' },
-            'Key': { img: 'images/key.jpg', iconImg: 'icons/key.png', icon: '🔑', title: 'Jingling Keys', desc: 'Whenever I hear this sound, I know you\'re home! I always rush to the door to greet you.' },
-            'Toy': { img: 'images/toy.jpg', iconImg: 'icons/toy.png', icon: '🧸', title: 'Chewed-up Mouse', desc: 'This is my trophy! It\'s the gaming partner you played with me for hours.' },
-            'Bookmark': { img: 'images/bookmark.jpg', iconImg: 'icons/Bookmark.png', icon: '🔖', title: 'Annoying Bookmark', desc: 'Hmph, whenever you look at books, you ignore me. I swat it away so you look at me instead.' },
-            'Mousepad': { img: 'images/mousepad.jpg', iconImg: 'icons/mousepad.png',icon: '🖱️', title: 'Muddy Mousepad', desc: 'Gotcha! I stepped on this when you weren\'t looking. That\'s what you get for working too much.' },
-            'Can': { img: 'images/can.jpg', iconImg: 'icons/can.png', icon: '🥫', title: 'Premium Canned Food', desc: 'Wow! A hidden treasure! Every time I eat this, I feel like the happiest kitten in the world.' },
-            'Doll': { img: 'images/doll.jpg', iconImg: 'icons/doll.png', icon: '🐈', title: 'Twin Plushie', desc: 'You sleep with this at night like you\'re holding me. Let it keep you company in my place.' },
-            'Collar': { img: 'images/collar.jpg', iconImg: 'icons/collar.png',icon: '🎗️', title: 'Tiny Collar', desc: 'I was so small when I wore this. The bell rang all the time. It\'s proof that we met.' },
-            'Urn': { img: 'images/urn.jpg', icon: '✨', title: 'My Little Wooden Box', desc: 'It\'s so quiet and comfortable here... Am I going to sleep in this? Well then... Goodnight.' }
+            'Cloth': { img: 'images/cloth.jpg', iconImg: 'icons/cloth.png', title: 'Sofa Patch', desc: 'Hehe, I scratched the sofa here. You sighed but sewed this patch on. It feels the best to scratch!' },
+            'Food': { img: 'images/food.jpg', iconImg: 'icons/food.png', title: 'Leftover Kibble', desc: 'I left a few bites just for you, so you know I\'m not starving. Remember to eat your dinner!' },
+            'Key': { img: 'images/key.jpg', iconImg: 'icons/key.png', title: 'Jingling Keys', desc: 'Whenever I hear this sound, I know you\'re home! I always rush to the door to greet you.' },
+            'Toy': { img: 'images/toy.jpg', iconImg: 'icons/toy.png', title: 'Chewed-up Mouse', desc: 'This is my trophy! It\'s the gaming partner you played with me for hours.' },
+            'Bookmark': { img: 'images/bookmark.jpg', iconImg: 'icons/Bookmark.png', title: 'Annoying Bookmark', desc: 'Hmph, whenever you look at books, you ignore me. I swat it away so you look at me instead.' },
+            'Mousepad': { img: 'images/mousepad.jpg', iconImg: 'icons/mousepad.png', title: 'Muddy Mousepad', desc: 'Gotcha! I stepped on this when you weren\'t looking. That\'s what you get for working too much.' },
+            'Can': { img: 'images/can.jpg', iconImg: 'icons/can.png', title: 'Premium Canned Food', desc: 'Wow! A hidden treasure! Every time I eat this, I feel like the happiest kitten in the world.' },
+            'Doll': { img: 'images/doll.jpg', iconImg: 'icons/doll.png', title: 'Twin Plushie', desc: 'You sleep with this at night like you\'re holding me. Let it keep you company in my place.' },
+            'Collar': { img: 'images/collar.jpg', iconImg: 'icons/collar.png', title: 'Tiny Collar', desc: 'I was so small when I wore this. The bell rang all the time. It\'s proof that we met.' },
+            'Urn': { img: 'images/urn.jpg', title: 'My Little Wooden Box', desc: 'It\'s so quiet and comfortable here... Am I going to sleep in this? Well then... Goodnight.' }
         };
 
         const levelConfig = {
@@ -583,622 +356,309 @@ stepsSound.volume = 0.3; // 初始音量调小一点，比较真实
 
         // --- Scene Setup ---
         const scene = new THREE.Scene();
-        const dayColor = new THREE.Color('#2c3e50'); 
-        const nightColor = new THREE.Color('#1a1a1a'); 
-        // Warm Colors for Ending
+        const dayColor = new THREE.Color('#2c3e50'); const nightColor = new THREE.Color('#1a1a1a'); 
         const warmDayColor = new THREE.Color('#f7eac8'); 
-        const warmSunColor = new THREE.Color('#ffddaa'); 
 
-        scene.background = dayColor;
-        scene.fog = new THREE.Fog(dayColor, 10, 50); 
-
-        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
-        camera.position.set(11, 11, 18); 
-
+        scene.background = dayColor; scene.fog = new THREE.Fog(dayColor, 10, 50); 
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000); camera.position.set(11, 11, 18); 
         const renderer = new THREE.WebGLRenderer({ antialias: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(window.devicePixelRatio);
-        renderer.toneMapping = THREE.ACESFilmicToneMapping;
-        renderer.toneMappingExposure = 1.; 
-        renderer.shadowMap.enabled = true;
-        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        renderer.setSize(window.innerWidth, window.innerHeight); renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
         document.body.appendChild(renderer.domElement);
 
         // --- Post Processing ---
         const composer = new EffectComposer(renderer);
-        const renderPass = new RenderPass(scene, camera);
-        composer.addPass(renderPass);
-
-        // 1. Bloom Pass (Subtle)
+        composer.addPass(new RenderPass(scene, camera));
+        
         const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.5, 0.4, 0.85);
-        bloomPass.threshold = 0.85; bloomPass.strength = 0.3; bloomPass.radius = 0.2;    
-        composer.addPass(bloomPass);
+        bloomPass.threshold = 0.85; bloomPass.strength = 0.3; bloomPass.radius = 0.2; composer.addPass(bloomPass);
+        
+        const grayscalePass = new ShaderPass(GrayscaleShader); grayscalePass.uniforms.amount.value = 1.0; composer.addPass(grayscalePass);
+        const noisePass = new ShaderPass(NoiseShader); noisePass.uniforms.amount.value = 0.15; composer.addPass(noisePass);
 
-        // 2. Grayscale Pass
-        const grayscalePass = new ShaderPass(GrayscaleShader);
-        grayscalePass.uniforms.amount.value = 1.0; 
-        composer.addPass(grayscalePass);
-
-        // 3. Noise Pass (Dynamic)
-        const noisePass = new ShaderPass(NoiseShader);
-        noisePass.uniforms.amount.value = 0.15; // Start high for B&W feel
-        composer.addPass(noisePass);
-
-        // --- Camera Controls ---
+        // --- Controls ---
         const controls = new OrbitControls(camera, renderer.domElement);
         controls.enableDamping = true; controls.maxPolarAngle = Math.PI / 2 - 0.05; controls.enablePan = false;   
         controls.enableZoom = true; controls.minDistance = 1.0; controls.maxDistance = 100.0; controls.rotateSpeed = 0.8;
-        controls.mouseButtons = { LEFT: THREE.MOUSE.ROTATE, MIDDLE: THREE.MOUSE.DOLLY, RIGHT: THREE.MOUSE.ROTATE }
-
-        // 新增：拖动时的脚步声音效
-controls.addEventListener('start', () => {
-    if (!isEnding) {
-        stepsSound.loop = true;
-        stepsSound.play().catch(e => {});
-    }
-});
-// 监听视角转动
-controls.addEventListener('start', function() {
-    if (!hasRotated) {
-        hasRotated = true;
-        // 隐藏文字
-        const overlay = document.getElementById('guide-overlay');
-        if(overlay) {
-            overlay.style.opacity = 0;
-            setTimeout(() => overlay.remove(), 1500);
-        }
-        // 提示：第一个目标（Sofa Patch / Cloth）在下一阶段会获得特殊光效
-    }
-});
-
-controls.addEventListener('end', () => {
-    stepsSound.pause();
-    stepsSound.currentTime = 0; // 停止后重置进度，确保下次从头播放
-});
-
-        // --- Visual State Manager (Color & Noise) ---
-        function updateVisualState(targetLevel) {
-            if (isEnding) return; 
-            const config = levelConfig[targetLevel];
-            const isComplete = config.required.every(item => collectedItems.has(item));
-            // Target: 0.0 (color) if complete, 1.0 (B&W) if not
-            const targetAmount = isComplete ? 0.0 : 1.0;
-            // Target Noise: 0.0 (clean) if complete, 0.15 (grainy) if not
-            const targetNoise = isComplete ? 0.0 : 0.15;
-
-            new TWEEN.Tween(grayscalePass.uniforms.amount).to({ value: targetAmount }, 1500).easing(TWEEN.Easing.Quadratic.Out).start();
-            new TWEEN.Tween(noisePass.uniforms.amount).to({ value: targetNoise }, 1500).easing(TWEEN.Easing.Quadratic.Out).start();
-        }
-
-        // --- Create Ground Base ---
-        function createGround() {
-            const geometry = new THREE.CircleGeometry(60, 64);
-            const material = new THREE.MeshStandardMaterial({ color: 0x0b1013, roughness: 1.0, metalness: 0.0, side: THREE.DoubleSide });
-            const ground = new THREE.Mesh(geometry, material);
-            ground.rotation.x = -Math.PI / 2; ground.position.y = -0.05; ground.receiveShadow = true; 
-            scene.add(ground);
-        }
-        createGround();
-
-        // --- Game Logic ---
-        window.startGame = function() {
-            // 游戏开始后，延迟一点点显示指引文字
-setTimeout(() => {
-    if(!hasRotated) document.getElementById('guide-overlay').style.opacity = 1;
-}, 3000);
-            // 激活音效权限（静音播放一下立即暂停）
-            purrSound.play().then(() => { purrSound.pause(); purrSound.volume = 0; }).catch(e => {});
-            stepsSound.play().then(() => { stepsSound.pause(); }).catch(e => {});
-            
-            const bgm = document.getElementById('bgm');
-            bgm.volume = 0.5; 
-            if (!isMuted) bgm.play().catch(e => console.log("Interaction needed to play audio"));
-            
-            const screen = document.getElementById('start-screen');
-            screen.style.opacity = 0;
-            setTimeout(() => { screen.style.display = 'none'; }, 2000);
-            if (!isNight && rainSystem) rainSystem.visible = true;
-
-            // 新增：游戏开始时直接触发镜头移动到第一层的房间
-            goToFloor(1);
-        }
-
-        window.toggleSound = function() {
-    isMuted = !isMuted;
-    const bgm = document.getElementById('bgm');
-    const btn = document.getElementById('sound-toggle');
-    
-    if (isMuted) {
-        btn.innerText = 'OFF'; // 极简文字替代静音图标
-        bgm.muted = true;
-    } else {
-        btn.innerText = 'BGM'; // 极简文字替代声音图标
-        bgm.muted = false;
-        if (bgm.paused) bgm.play().catch(e => {});
-    }
-}
-
-        // --- Weather Effects ---
-        let stars, rainSystem;
-        function createStars() {
-            const geometry = new THREE.BufferGeometry(); const vertices = [];
-            for (let i = 0; i < 1500; i++) { vertices.push(THREE.MathUtils.randFloatSpread(300)); vertices.push(THREE.MathUtils.randFloatSpread(300)); vertices.push(THREE.MathUtils.randFloatSpread(300)); }
-            geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
-            const material = new THREE.PointsMaterial({ color: 0xFFFFFF, size: 0.4, transparent: true, opacity: 0.8 });
-            stars = new THREE.Points(geometry, material); stars.visible = false; scene.add(stars);
-        }
-        createStars();
-
-        function createRain() {
-            const geometry = new THREE.BufferGeometry(); const vertices = [];
-            for (let i = 0; i < 5000; i++) { vertices.push(THREE.MathUtils.randFloatSpread(200)); vertices.push(Math.random() * 150 + 50); vertices.push(THREE.MathUtils.randFloatSpread(200)); }
-            geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
-            const material = new THREE.PointsMaterial({ color: 0xaaaaee, size: 0.5, transparent: true, opacity: 0.6 });
-            rainSystem = new THREE.Points(geometry, material); rainSystem.visible = false; scene.add(rainSystem);
-        }
-        createRain();
-
-        function animateRain() {
-            if (!rainSystem || !rainSystem.visible) return;
-            const positions = rainSystem.geometry.attributes.position.array;
-            for (let i = 1; i < positions.length; i += 3) { positions[i] -= 2.0; if (positions[i] < -20) { positions[i] = 150; } }
-            rainSystem.geometry.attributes.position.needsUpdate = true;
-        }
-
-        // --- Lighting (Soft, Warm, Low Contrast) ---
-        // Very strong, creamy/warm ambient light to fill shadows and lower contrast
-        const ambientLight = new THREE.HemisphereLight(0xfff5e6, 0x8d7c6a, 2.0);
-        scene.add(ambientLight);
-        // Weaker, warm directional light for soft shadows
-        const sunLight = new THREE.DirectionalLight(0xffdfba, 1.0);
-        sunLight.position.set(8, 15, 8); sunLight.castShadow = true;
-        sunLight.shadow.mapSize.set(2048, 2048); sunLight.shadow.bias = -0.0001; sunLight.shadow.radius = 4; // Softer shadows
-        scene.add(sunLight);
-
-        new RGBELoader().load('https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/royal_esplanade_1k.hdr', (texture) => {
-            texture.mapping = THREE.EquirectangularReflectionMapping;
-            scene.environment = texture; 
-            scene.environmentIntensity = 0.2; // Low environment reflection
+        
+        controls.addEventListener('start', () => {
+            if (!isEnding) { stepsSound.loop = true; stepsSound.play().catch(e => {}); }
+            if (!hasRotated) {
+                hasRotated = true;
+                const overlay = document.getElementById('guide-overlay');
+                if(overlay) { overlay.style.opacity = 0; setTimeout(() => overlay.remove(), 1500); }
+            }
         });
+        controls.addEventListener('end', () => { stepsSound.pause(); stepsSound.currentTime = 0; });
 
-        // --- Model Loading & Material Overrides ---
-        let modelScene;
-        const viewAnchors = {}; 
-        const raycaster = new THREE.Raycaster(); 
-        const pointer = new THREE.Vector2();
-        const pickableObjects = []; 
-        const lampLights = []; 
+        // --- Ground & Environment ---
+        const ground = new THREE.Mesh(new THREE.CircleGeometry(60, 64), new THREE.MeshStandardMaterial({ color: 0x0b1013, roughness: 1.0 }));
+        ground.rotation.x = -Math.PI / 2; ground.position.y = -0.05; ground.receiveShadow = true; scene.add(ground);
 
-        // 1. 先初始化 DRACO 解码器
-        const dracoLoader = new DRACOLoader();
-        dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
+        let stars, rainSystem;
+        function createWeather() {
+            let geom = new THREE.BufferGeometry(); let pos = [];
+            for (let i = 0; i < 1500; i++) pos.push(THREE.MathUtils.randFloatSpread(300), THREE.MathUtils.randFloatSpread(300), THREE.MathUtils.randFloatSpread(300));
+            geom.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+            stars = new THREE.Points(geom, new THREE.PointsMaterial({ color: 0xFFFFFF, size: 0.4, transparent: true, opacity: 0.8 })); stars.visible = false; scene.add(stars);
 
-        // 2. 初始化 GLTF 加载器并绑定解码器
-        const loader = new GLTFLoader();
-        loader.setDRACOLoader(dracoLoader);
+            geom = new THREE.BufferGeometry(); pos = [];
+            for (let i = 0; i < 5000; i++) pos.push(THREE.MathUtils.randFloatSpread(200), Math.random() * 150 + 50, THREE.MathUtils.randFloatSpread(200));
+            geom.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+            rainSystem = new THREE.Points(geom, new THREE.PointsMaterial({ color: 0xaaaaee, size: 0.5, transparent: true, opacity: 0.6 })); rainSystem.visible = true; scene.add(rainSystem);
+        }
+        createWeather();
 
-        // 3. 执行加载
+        const ambientLight = new THREE.HemisphereLight(0xfff5e6, 0x8d7c6a, 2.0); scene.add(ambientLight);
+        const sunLight = new THREE.DirectionalLight(0xffdfba, 1.0);
+        sunLight.position.set(8, 15, 8); sunLight.castShadow = true; sunLight.shadow.mapSize.set(2048, 2048); scene.add(sunLight);
+
+        // --- Model Loading ---
+        let modelScene; const viewAnchors = {}; const raycaster = new THREE.Raycaster(); const pointer = new THREE.Vector2();
+        const pickableObjects = []; const lampLights = []; 
+        
+        const dracoLoader = new DRACOLoader(); dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
+        const loader = new GLTFLoader(); loader.setDRACOLoader(dracoLoader);
+
         loader.load('model.glb', (gltf) => {
             modelScene = gltf.scene;
-            const box = new THREE.Box3().setFromObject(modelScene); 
-            const size = box.getSize(new THREE.Vector3());
-            const scale = 8 / Math.max(size.x, size.y, size.z); 
-            modelScene.scale.set(scale, scale, scale);
-            modelScene.position.y = 0; 
+            const box = new THREE.Box3().setFromObject(modelScene); const size = box.getSize(new THREE.Vector3());
+            const scale = 8 / Math.max(size.x, size.y, size.z); modelScene.scale.set(scale, scale, scale);
             modelScene.updateMatrixWorld(true);
 
             modelScene.traverse((child) => {
                 if (child.name.includes('View_')) { 
-                    const worldPos = new THREE.Vector3(); 
-                    child.getWorldPosition(worldPos); 
-                    viewAnchors[child.name] = worldPos; 
-                    child.visible = false; 
-                    return; 
+                    const worldPos = new THREE.Vector3(); child.getWorldPosition(worldPos); 
+                    viewAnchors[child.name] = worldPos; child.visible = false; return; 
                 }
                 if (child.isMesh) {
-                    child.castShadow = true; 
-                    child.receiveShadow = true;
-                    
-                    if (child.name.includes('Glass')) { 
-                        child.material = new THREE.MeshPhysicalMaterial({ color: 0xffffff, metalness: 0, roughness: 0.05, transmission: 0.98, thickness: 1.5, transparent: true, opacity: 1, envMapIntensity: 1.5 }); 
-                    }
+                    child.castShadow = true; child.receiveShadow = true;
+                    if (child.name.includes('Glass')) child.material = new THREE.MeshPhysicalMaterial({ color: 0xffffff, metalness: 0, roughness: 0.05, transmission: 0.98, transparent: true }); 
                     else if (child.name.includes('Light_')) { 
-                        child.material = new THREE.MeshStandardMaterial({ color: 0xFFFFFF, emissive: 0xFFFFFF, emissiveIntensity: 0.0, roughness: 0.3 }); 
-                        const lamp = new THREE.PointLight(0xFFFFFF, 0, 6); 
-                        lamp.castShadow = true; 
-                        lamp.position.set(0, -0.2, 0); 
-                        child.add(lamp); 
-                        lampLights.push({ mesh: child, light: lamp, intensity: 2.0 }); 
+                        child.material = new THREE.MeshStandardMaterial({ color: 0xFFFFFF, emissive: 0xFFFFFF, emissiveIntensity: 0.0 }); 
+                        const lamp = new THREE.PointLight(0xFFFFFF, 0, 6); lamp.position.set(0, -0.2, 0); child.add(lamp); lampLights.push({ mesh: child, light: lamp, intensity: 2.0 }); 
                     }
                     else if (child.name.includes('Pickable_')) { 
-                        child.userData.localStartY = child.position.y; 
-                        child.userData.floatPhase = Math.random() * Math.PI * 2; 
-                        child.material = new THREE.MeshStandardMaterial({ color: 0xffffff, emissive: 0xcccccc, emissiveIntensity: 1.0, roughness: 0.9, metalness: 0.0 }); 
+                        child.userData.localStartY = child.position.y; child.userData.floatPhase = Math.random() * Math.PI * 2; 
+                        child.material = new THREE.MeshStandardMaterial({ color: 0xffffff, emissive: 0xcccccc, emissiveIntensity: 1.0, roughness: 0.9 }); 
                         pickableObjects.push(child); 
                     }
                 }
             });
-            scene.add(modelScene); 
-            document.getElementById('loading').style.display = 'none';
+            scene.add(modelScene); document.getElementById('loading').style.display = 'none';
         }, 
-        (xhr) => { 
-            console.log((xhr.loaded / xhr.total * 100) + '% loaded'); 
-        },
-        (error) => { 
-            console.error('模型加载出错:', error); 
-        });
+        (xhr) => { console.log((xhr.loaded / xhr.total * 100) + '% loaded'); },
+        (error) => { console.error('模型加载出错:', error); });
+
+        // --- Game Logic ---
+        window.startGame = function() {
+            setTimeout(() => { if(!hasRotated) document.getElementById('guide-overlay').style.opacity = 1; }, 3000);
+            purrSound.play().then(() => { purrSound.pause(); purrSound.volume = 0; }).catch(e => {});
+            stepsSound.play().then(() => { stepsSound.pause(); }).catch(e => {});
+            
+            const bgm = document.getElementById('bgm'); bgm.volume = 0.5; 
+            if (!isMuted) bgm.play().catch(e => console.log("Interaction needed to play audio"));
+            
+            const screen = document.getElementById('start-screen'); screen.style.opacity = 0;
+            setTimeout(() => { screen.style.display = 'none'; }, 2000);
+            goToFloor(1);
+        }
+
+        window.toggleSound = function() {
+            isMuted = !isMuted; const bgm = document.getElementById('bgm'); const btn = document.getElementById('sound-toggle');
+            if (isMuted) { btn.innerText = 'OFF'; bgm.muted = true; } 
+            else { btn.innerText = 'BGM'; bgm.muted = false; if (bgm.paused) bgm.play().catch(e => {}); }
+        }
+
         window.tryGoToFloor = function(targetLevel) {
             if (targetLevel <= currentLevel) { goToFloor(targetLevel); return; }
-            const prevLevelConfig = levelConfig[targetLevel - 1];
-            const missingItems = prevLevelConfig.required.filter(item => !collectedItems.has(item));
-            if (missingItems.length > 0) { showToast(`🔒 ${missingItems.length} more memories to find!`); } else { goToFloor(targetLevel); }
+            const missing = levelConfig[targetLevel - 1].required.filter(item => !collectedItems.has(item));
+            if (missing.length > 0) showToast(`🔒 ${missing.length} more memories to find!`); else goToFloor(targetLevel);
         }
 
         function goToFloor(level) {
-            // 播放一段短促的脚步声
-    stepsSound.loop = false; 
-    stepsSound.currentTime = 0;
-    stepsSound.play().catch(e => {});
-            const floorName = `Level_${level}`;
-            const targetFloor = modelScene.getObjectByName(floorName) || modelScene.children.find(c => c.name.includes(floorName));
-            updateVisualState(level);
-            if (level === 4 && !isNight) toggleDayNight(); 
+            stepsSound.loop = false; stepsSound.currentTime = 0; stepsSound.play().catch(e => {});
+            const floorName = `Level_${level}`; const targetFloor = modelScene.getObjectByName(floorName);
+            
+            const config = levelConfig[level]; const isComplete = config.required.every(item => collectedItems.has(item));
+            new TWEEN.Tween(grayscalePass.uniforms.amount).to({ value: isComplete ? 0.0 : 1.0 }, 1500).start();
+            new TWEEN.Tween(noisePass.uniforms.amount).to({ value: isComplete ? 0.0 : 0.15 }, 1500).start();
+            
             currentLevel = level;
             if (level === 4) {
                 let urn = null; modelScene.traverse(c => { if (c.name.includes('Urn') && c.name.includes('Pickable')) urn = c; });
                 if (urn) {
-                    const box = new THREE.Box3().setFromObject(urn); const center = box.getCenter(new THREE.Vector3());
-                    const targetPos = center.clone().add(new THREE.Vector3(1.2, 1.2, 1.2));
-                    new TWEEN.Tween(camera.position).to(targetPos, 2000).easing(TWEEN.Easing.Cubic.InOut).start();
-                    new TWEEN.Tween(controls.target).to(center, 2000).easing(TWEEN.Easing.Cubic.InOut).start();
-                    return; 
+                    const center = new THREE.Box3().setFromObject(urn).getCenter(new THREE.Vector3());
+                    new TWEEN.Tween(camera.position).to(center.clone().add(new THREE.Vector3(1.2, 1.2, 1.2)), 2000).start();
+                    new TWEEN.Tween(controls.target).to(center, 2000).start(); return; 
                 }
             }
-            const viewName = floorName.replace('Level', 'View'); const anchorKey = Object.keys(viewAnchors).find(k => k.includes(viewName));
+            
+            const anchorKey = Object.keys(viewAnchors).find(k => k.includes(floorName.replace('Level', 'View')));
             if (targetFloor && viewAnchors[anchorKey]) {
-                let targetPos = viewAnchors[anchorKey]; let targetLookAt;
-                if (level === 2) { const mousepad = modelScene.getObjectByName('Pickable_Mousepad'); if (mousepad) { const box = new THREE.Box3().setFromObject(mousepad); targetLookAt = box.getCenter(new THREE.Vector3()); } else { const box = new THREE.Box3().setFromObject(targetFloor); targetLookAt = box.getCenter(new THREE.Vector3()); } } else { const box = new THREE.Box3().setFromObject(targetFloor); targetLookAt = box.getCenter(new THREE.Vector3()); }
-                new TWEEN.Tween(camera.position).to(targetPos, 2000).easing(TWEEN.Easing.Cubic.InOut).start();
-                new TWEEN.Tween(controls.target).to(targetLookAt, 2000).easing(TWEEN.Easing.Cubic.InOut).start();
+                const targetLookAt = new THREE.Box3().setFromObject(targetFloor).getCenter(new THREE.Vector3());
+                new TWEEN.Tween(camera.position).to(viewAnchors[anchorKey], 2000).start();
+                new TWEEN.Tween(controls.target).to(targetLookAt, 2000).start();
             }
         }
 
-        function checkLevelComplete(level) {
-            const config = levelConfig[level]; const allFound = config.required.every(item => collectedItems.has(item));
-            if (allFound) {
-                if (currentLevel === level) { showToast(`✨ Memories are becoming clear...`); updateVisualState(level); }
-                const nextBtnId = config.nextBtn;
-                if (nextBtnId) {
-                    const btn = document.getElementById(nextBtnId); btn.classList.remove('locked'); btn.classList.add('active');
-                    let newIcon = '🔓'; if (nextBtnId === 'btn-2') newIcon = '📚'; if (nextBtnId === 'btn-3') newIcon = '🛏️'; if (nextBtnId === 'btn-4') newIcon = '✨'; 
-                    btn.innerHTML = btn.innerHTML.replace('🔒', newIcon); setTimeout(() => { showToast(`✨ The way to the next floor is open!`); }, 1600);
-                }
-            }
-        }
-
-        function showToast(msg) { const toast = document.getElementById('toast'); toast.innerText = msg; toast.style.opacity = 1; setTimeout(() => { toast.style.opacity = 0; }, 3000); }
         window.showItemModal = function(rawName, isInventory = false) {
             const info = itemDetails[rawName]; if (!info) return;
-            const imgEl = document.getElementById('item-modal-img'); if (info.img) { imgEl.src = info.img; imgEl.style.display = 'block'; } else { imgEl.style.display = 'none'; }
+            const imgEl = document.getElementById('item-modal-img'); 
+            if (info.img) { imgEl.src = info.img; imgEl.style.display = 'block'; } else imgEl.style.display = 'none';
             document.getElementById('item-modal-title').innerText = info.title; document.getElementById('item-modal-desc').innerText = info.desc;
+            
             const btn = document.getElementById('modal-action-btn');
-            if (isInventory) { btn.innerText = "Close"; btn.onclick = function() { document.getElementById('item-modal').classList.remove('show'); }; } else { btn.innerText = "Put in Backpack"; btn.onclick = window.confirmCollectItem; }
+            if (isInventory) { btn.innerText = "Close"; btn.onclick = () => document.getElementById('item-modal').classList.remove('show'); } 
+            else { btn.innerText = "Put in Backpack"; btn.onclick = window.confirmCollectItem; }
             document.getElementById('item-modal').classList.add('show');
         }
 
-// 声明一个变量记录最后点击的位置
-let lastHitPoint = new THREE.Vector3();
-
-window.confirmCollectItem = function() {
-    if (!pendingItemObj || !pendingItemName) return;
-    
-    const pop = document.getElementById('pop-sound'); 
-    if(pop && !isMuted) { pop.currentTime = 0; pop.volume = 0.6; pop.play().catch(e => {}); }
-    
-    document.getElementById('item-modal').classList.remove('show');
-    
-    // 从场景移除物体
-    const targetObj = pendingItemObj;
-    const targetName = pendingItemName;
-    
-    pickableObjects.splice(pickableObjects.indexOf(targetObj), 1);
-    new TWEEN.Tween(targetObj.scale).to({x:0, y:0, z:0}, 300).easing(TWEEN.Easing.Back.In).onComplete(() => { 
-        targetObj.visible = false; 
-    }).start();
-
-    // 加入背包
-    collectedItems.add(targetName);
-   const sidebar = document.getElementById('inventory-sidebar'); 
-    const div = document.createElement('div'); 
-    div.className = 'item-slot'; 
-    
-    // --- 新增的创建图片的逻辑 ---
-    const imgEl = document.createElement('img');
-    imgEl.src = itemDetails[targetName].iconImg; // 读取你刚才配置的 PNG 路径
-    imgEl.style.width = '70%';  // 控制图片在方块内的缩放大小
-    imgEl.style.height = '70%';
-    imgEl.style.objectFit = 'contain'; // 保证图片比例不拉伸
-    imgEl.style.pointerEvents = 'none'; // 防止图片遮挡 div 的点击事件
-    
-    div.appendChild(imgEl); // 把图片塞进方块里
-    // ----------------------------
-
-    div.onclick = function() { window.showItemModal(targetName, true); }; 
-    sidebar.appendChild(div);
-
-    // --- 核心修复：如果是骨灰盒，延迟开启结局 ---
-    if (targetName === 'Urn') {
-        setTimeout(() => {
-            triggerWarmEnding(lastHitPoint); // 使用保存的点击位置
-        }, 800);
-    } else {
-        // 普通物品检查进度
-        let itemLevel = 0; 
-        for (let lvl in levelConfig) { 
-            if (levelConfig[lvl].required.includes(targetName)) { itemLevel = parseInt(lvl); break; } 
-        }
-        if (itemLevel > 0) checkLevelComplete(itemLevel);
-    }
-
-    pendingItemName = null;
-    pendingItemObj = null;
-}
-
-let hoveredObject = null; // 用于记录当前悬停的物体
-window.addEventListener('mousemove', (event) => {
-    pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
-    pointer.y = -(event.clientY / window.innerHeight) * 2 + 1;
-    raycaster.setFromCamera(pointer, camera);
-
-    // 如果没有弹窗且有可交互物体
-    if (!document.querySelector('.modal-overlay.show') && pickableObjects.length > 0) {
-        const intersects = raycaster.intersectObjects(pickableObjects, false);
-        
-        if (intersects.length > 0) {
-            const obj = intersects[0].object;
+        window.confirmCollectItem = function() {
+            if (!pendingItemObj || !pendingItemName) return;
+            const pop = document.getElementById('pop-sound'); if(pop && !isMuted) { pop.currentTime = 0; pop.volume = 0.6; pop.play().catch(e => {}); }
+            document.getElementById('item-modal').classList.remove('show');
             
-            // 1. 鼠标变大
-            document.body.style.cursor = 'var(--cursor-large)';
-            
-            // 2. 物体变金色发光
-            if (hoveredObject !== obj) {
-                // 如果之前有悬停物体，先重置它
-                if (hoveredObject) {
-                    hoveredObject.material.emissive.setHex(0xcccccc); 
-                    hoveredObject.material.emissiveIntensity = 1.0;
-                }
-                // 设置当前物体为金色
-                hoveredObject = obj;
-                if (hoveredObject.material.emissive) {
-                    hoveredObject.material.emissive.setHex(0xFFD700); // 金色
-                    hoveredObject.material.emissiveIntensity = 4.0;   // 增强亮度
+            const targetObj = pendingItemObj; const targetName = pendingItemName;
+            pickableObjects.splice(pickableObjects.indexOf(targetObj), 1);
+            new TWEEN.Tween(targetObj.scale).to({x:0, y:0, z:0}, 300).onComplete(() => targetObj.visible = false).start();
+
+            collectedItems.add(targetName);
+            const div = document.createElement('div'); div.className = 'item-slot'; 
+            if(itemDetails[targetName].iconImg) {
+                const imgEl = document.createElement('img'); imgEl.src = itemDetails[targetName].iconImg;
+                imgEl.style.width = '70%'; imgEl.style.height = '70%'; imgEl.style.objectFit = 'contain'; imgEl.style.pointerEvents = 'none';
+                div.appendChild(imgEl);
+            }
+            div.onclick = () => window.showItemModal(targetName, true); 
+            document.getElementById('inventory-sidebar').appendChild(div);
+
+            if (targetName === 'Urn') { setTimeout(() => triggerWarmEnding(lastHitPoint), 800); } 
+            else {
+                let itemLevel = 0; for (let lvl in levelConfig) if (levelConfig[lvl].required.includes(targetName)) itemLevel = parseInt(lvl);
+                if (itemLevel > 0) {
+                    const config = levelConfig[itemLevel]; const allFound = config.required.every(item => collectedItems.has(item));
+                    if (allFound) {
+                        showToast(`✨ Memories are becoming clear...`); new TWEEN.Tween(grayscalePass.uniforms.amount).to({ value: 0.0 }, 1500).start(); new TWEEN.Tween(noisePass.uniforms.amount).to({ value: 0.0 }, 1500).start();
+                        if (config.nextBtn) {
+                            const btn = document.getElementById(config.nextBtn); btn.classList.remove('locked'); btn.classList.add('active');
+                            setTimeout(() => showToast(`✨ The way to the next floor is open!`), 1600);
+                        }
+                    }
                 }
             }
-        } else {
-            // 3. 恢复默认状态
-            document.body.style.cursor = 'var(--cursor-small)';
-            if (hoveredObject) {
-                hoveredObject.material.emissive.setHex(0xcccccc); // 恢复原色
-                hoveredObject.material.emissiveIntensity = 1.0;
-                hoveredObject = null;
+            pendingItemName = null; pendingItemObj = null;
+        }
+
+        function showToast(msg) { const t = document.getElementById('toast'); t.innerText = msg; t.style.opacity = 1; setTimeout(() => t.style.opacity = 0, 3000); }
+
+        // --- Interaction ---
+        let hoveredObject = null;
+        window.addEventListener('mousemove', (event) => {
+            pointer.x = (event.clientX / window.innerWidth) * 2 - 1; pointer.y = -(event.clientY / window.innerHeight) * 2 + 1;
+            if (!document.querySelector('.modal-overlay.show') && pickableObjects.length > 0) {
+                raycaster.setFromCamera(pointer, camera); const intersects = raycaster.intersectObjects(pickableObjects, false);
+                if (intersects.length > 0) {
+                    document.body.style.cursor = 'var(--cursor-large-black)';
+                    
+                    if (hoveredObject !== intersects[0].object) {
+                        if (hoveredObject) { hoveredObject.material.emissive.setHex(0xcccccc); hoveredObject.material.emissiveIntensity = 1.0; }
+                        hoveredObject = intersects[0].object; hoveredObject.material.emissive.setHex(0xFFD700); hoveredObject.material.emissiveIntensity = 4.0;
+                    }
+                } else {
+                    document.body.style.cursor = 'var(--cursor-small)';
+                    if (hoveredObject) { hoveredObject.material.emissive.setHex(0xcccccc); hoveredObject.material.emissiveIntensity = 1.0; hoveredObject = null; }
+                }
             }
-        }
-    }
-});
+        });
 
-        
-      function triggerWarmEnding() {
-    isEnding = true;
-    collectedItems.add('Urn');
-    
-    // --- 原有的场景颜色切换逻辑保留 ---
-    if (isNight) toggleDayNight(); 
-    const warmAmbientColor = new THREE.Color('#fff5e6');
-    new TWEEN.Tween(scene.background).to(warmDayColor, 2000).start();
-    new TWEEN.Tween(sunLight).to({ intensity: 1.1 }, 2000).start();
-    new TWEEN.Tween(grayscalePass.uniforms.amount).to({ value: 0.0 }, 2000).start();
-    // ... 其他 Three.js 状态更新 ...
-
-    // --- 新增：生成可拖拽的线索图片 ---
-    const endScreen = document.getElementById('end-screen');
-    
-    collectedItems.forEach((itemName) => {
-        const info = itemDetails[itemName];
-        if (!info || !info.img) return;
-
-        const imgDiv = document.createElement('div');
-        imgDiv.className = 'scattered-memory';
-        
-        // 随机初始位置和角度
-        const randomX = Math.random() * (window.innerWidth - 150);
-        const randomY = Math.random() * (window.innerHeight - 150);
-        const randomRot = (Math.random() - 0.5) * 40;
-
-        imgDiv.style.left = `${randomX}px`;
-        imgDiv.style.top = `${randomY}px`;
-        imgDiv.style.transform = `rotate(${randomRot}deg)`;
-        
-        imgDiv.innerHTML = `<img src="${info.img}" alt="memory">`;
-        document.body.appendChild(imgDiv);
-
-        // 实现拖拽逻辑
-        makeDraggable(imgDiv);
-    });
-
-    // 显示结局屏幕
-    setTimeout(() => { 
-// 统一的结局触发逻辑
-function triggerWarmEnding(intersectPoint) {
-    if (isEnding) return;
-    // 播放并淡入呼噜声
-    purrSound.volume = 0;
-    purrSound.play();
-    let vol = 0;
-    const fadeIn = setInterval(() => {
-        if (vol < 0.5) {
-            vol += 0.05;
-            purrSound.volume = vol;
-        } else {
-            clearInterval(fadeIn);
-        }
-    }, 200);
-    isEnding = true;
-    
-    // 1. 3D 场景变暖
-    if (isNight) toggleDayNight(); 
-    new TWEEN.Tween(scene.background).to(warmDayColor, 3000).start();
-    new TWEEN.Tween(grayscalePass.uniforms.amount).to({ value: 0.0 }, 3000).start();
-
-    // 2. 将点击的 3D 坐标转为屏幕坐标
-    const vector = intersectPoint.clone().project(camera);
-    const startX = (vector.x + 1) / 2 * window.innerWidth;
-    const startY = -(vector.y - 1) / 2 * window.innerHeight;
-
-    // 3. 显示结局层
-    const endScreen = document.getElementById('end-screen');
-    endScreen.style.display = 'flex';
-    
-    setTimeout(() => {
-        endScreen.classList.add('show');
-        // 4. 文字显示 1.5 秒后照片开始迸发
-        setTimeout(() => {
-            generateScatteredMemories(startX, startY);
-        }, 1500);
-    }, 100);
-}
-
-function generateScatteredMemories(startX, startY) {
-    const safeZoneWidth = 700; // 这里的宽度加大，确保完全不挡住中间文字
-    const screenWidth = window.innerWidth;
-    const screenHeight = window.innerHeight;
-
-    Array.from(collectedItems).forEach((itemName, index) => {
-        const info = itemDetails[itemName];
-        if (!info || !info.img) return;
-
-        const imgDiv = document.createElement('div');
-        imgDiv.className = 'scattered-memory';
-        
-        // 计算最终落点：避开中间区域
-        let targetX;
-        const isLeft = Math.random() > 0.5;
-        if (isLeft) {
-            targetX = 50 + Math.random() * (screenWidth / 2 - safeZoneWidth / 2 - 150);
-        } else {
-            targetX = (screenWidth / 2 + safeZoneWidth / 2 + 50) + Math.random() * (screenWidth / 2 - safeZoneWidth / 2 - 150);
-        }
-        const targetY = 80 + Math.random() * (screenHeight - 350);
-        const rot = (Math.random() - 0.5) * 30;
-
-        // 设置 CSS 变量供动画使用
-        imgDiv.style.setProperty('--startX', `${startX}px`);
-        imgDiv.style.setProperty('--startY', `${startY}px`);
-        imgDiv.style.setProperty('--targetX', `${targetX}px`);
-        imgDiv.style.setProperty('--targetY', `${targetY}px`);
-        imgDiv.style.setProperty('--rot', `${rot}deg`);
-        
-        // 增加出现的间隔，让它们像喷泉一样一张张出来
-        imgDiv.style.animationDelay = `${index * 0.5}s`; 
-        
-        imgDiv.innerHTML = `<img src="${info.img}" style="width:100%"><p style="color:#555;font-size:11px;margin-top:5px;text-align:center;font-family:serif;">${info.title}</p>`;
-        
-        document.body.appendChild(imgDiv);
-        makeDraggable(imgDiv);
-    });
-}
-
-        document.getElementById('end-screen').classList.add('show'); 
-    }, 2500);
-}
-
-// 简单的拖拽实现函数
-function makeDraggable(el) {
-    let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-    
-    el.onmousedown = dragMouseDown;
-
-    function dragMouseDown(e) {
-        e.preventDefault();
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        document.onmouseup = closeDragElement;
-        document.onmousemove = elementDrag;
-        // 置顶当前拖拽的图片
-        el.style.zIndex = parseInt(el.style.zIndex || 10000) + 1;
-    }
-
-    function elementDrag(e) {
-        e.preventDefault();
-        pos1 = pos3 - e.clientX;
-        pos2 = pos4 - e.clientY;
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        el.style.top = (el.offsetTop - pos2) + "px";
-        el.style.left = (el.offsetLeft - pos1) + "px";
-    }
-
-    function closeDragElement() {
-        document.onmouseup = null;
-        document.onmousemove = null;
-    }
-}
         window.addEventListener('click', (event) => {
-            if (event.target.closest('.btn') || event.target.closest('.round-btn') || event.target.closest('.modal-content')) return;
-            if (document.querySelector('.modal-overlay.show')) return;
+            if (event.target.closest('.btn') || event.target.closest('.round-btn') || event.target.closest('.modal-content') || document.querySelector('.modal-overlay.show')) return;
             raycaster.setFromCamera(pointer, camera);
             if (pickableObjects.length > 0) {
                 const intersects = raycaster.intersectObjects(pickableObjects, false);
                 if (intersects.length > 0) {
-                    const pickedObj = intersects[0].object;
-                    const rawName = pickedObj.name.replace('Pickable_', '').split('.')[0]; 
-// 在点击监听的回调函数里
-if (rawName === 'Urn') {
-                // 1. 获取点击的 3D 坐标
-                const hitPoint = intersects[0].point;
-                
-                // 2. 先显示收集成功的弹窗（让用户点“收下了”）
-                pendingItemObj = pickedObj;
-                pendingItemName = rawName;
-                showItemModal(rawName, false); 
-                
-                // 3. 核心修改：重写弹窗按钮的点击事件，当点击“收下了”才触发结局
-                const modalBtn = document.querySelector('#item-modal .start-btn');
-                modalBtn.onclick = () => {
-                    closeModal(); // 关闭弹窗
-                    // 这里的 1000 是为了让弹窗消失后再开始动画，更自然
-                    setTimeout(() => {
-                        triggerWarmEnding(hitPoint); 
-                    }, 500);
-                };
-                return;
-            }
-                    
+                    lastHitPoint.copy(intersects[0].point);
+                    const pickedObj = intersects[0].object; const rawName = pickedObj.name.replace('Pickable_', '').split('.')[0]; 
                     pendingItemObj = pickedObj; pendingItemName = rawName;
+                    
+                    if (rawName === 'Urn') {
+                        showItemModal(rawName, false);
+                        document.querySelector('#item-modal .confirm-btn').onclick = () => {
+                            document.getElementById('item-modal').classList.remove('show');
+                            setTimeout(() => triggerWarmEnding(lastHitPoint), 500);
+                        };
+                        return;
+                    }
                     showItemModal(rawName, false); document.body.style.cursor = 'var(--cursor-default)';
                 }
             }
         });
 
-        
-        window.toggleDayNight = function() {
-            if (isEnding) return; 
-            isNight = !isNight; const btn = document.getElementById('theme-toggle');
-            if (isNight) {
-                btn.innerText = '🌙'; new TWEEN.Tween(scene.background).to(nightColor, 1500).start(); new TWEEN.Tween(scene.fog.color).to(nightColor, 1500).start(); new TWEEN.Tween(sunLight.color).to(new THREE.Color(0x888888), 1500).start(); new TWEEN.Tween(sunLight).to({ intensity: 0.3 }, 1500).start(); scene.environmentIntensity = 0.1; if (stars) stars.visible = true; if (rainSystem) rainSystem.visible = false; lampLights.forEach(item => { new TWEEN.Tween(item.light).to({ intensity: item.intensity }, 500).start(); item.mesh.material.emissiveIntensity = 1.0; });
-            } else {
-                btn.innerText = '☀️'; new TWEEN.Tween(scene.background).to(dayColor, 1500).start(); new TWEEN.Tween(scene.fog.color).to(dayColor, 1500).start(); new TWEEN.Tween(sunLight.color).to(new THREE.Color(0xffffff), 1500).start(); new TWEEN.Tween(sunLight).to({ intensity: 1.0 }, 1500).start(); scene.environmentIntensity = 0.2; if (stars) stars.visible = false; if (rainSystem) rainSystem.visible = true; lampLights.forEach(item => { new TWEEN.Tween(item.light).to({ intensity: 0 }, 500).start(); item.mesh.material.emissiveIntensity = 0.0; });
-            }
+        // --- Ending Sequence ---
+        function triggerWarmEnding(intersectPoint) {
+            if (isEnding) return; isEnding = true;
+            
+            purrSound.volume = 0; purrSound.play();
+            let vol = 0; const fadeIn = setInterval(() => { if (vol < 0.5) purrSound.volume = (vol += 0.05); else clearInterval(fadeIn); }, 200);
+            
+            new TWEEN.Tween(scene.background).to(warmDayColor, 3000).start();
+            new TWEEN.Tween(grayscalePass.uniforms.amount).to({ value: 0.0 }, 3000).start();
+
+            const vector = intersectPoint.clone().project(camera);
+            const startX = (vector.x + 1) / 2 * window.innerWidth; const startY = -(vector.y - 1) / 2 * window.innerHeight;
+
+            const endScreen = document.getElementById('end-screen'); endScreen.style.display = 'flex';
+            setTimeout(() => {
+                endScreen.classList.add('show');
+                setTimeout(() => generateScatteredMemories(startX, startY), 1500);
+            }, 100);
         }
 
+        function generateScatteredMemories(startX, startY) {
+            const screenW = window.innerWidth; const screenH = window.innerHeight;
+            Array.from(collectedItems).forEach((itemName, index) => {
+                const info = itemDetails[itemName]; if (!info || !info.img) return;
+                const imgDiv = document.createElement('div'); imgDiv.className = 'scattered-memory';
+                
+                const isLeft = Math.random() > 0.5;
+                const targetX = isLeft ? 50 + Math.random() * (screenW / 2 - 500) : (screenW / 2 + 350) + Math.random() * (screenW / 2 - 500);
+                const targetY = 80 + Math.random() * (screenH - 350); const rot = (Math.random() - 0.5) * 30;
+
+                imgDiv.style.setProperty('--startX', `${startX}px`); imgDiv.style.setProperty('--startY', `${startY}px`);
+                imgDiv.style.setProperty('--targetX', `${targetX}px`); imgDiv.style.setProperty('--targetY', `${targetY}px`);
+                imgDiv.style.setProperty('--rot', `${rot}deg`); imgDiv.style.animationDelay = `${index * 0.5}s`; 
+                imgDiv.innerHTML = `<img src="${info.img}" style="width:100%"><p style="color:#555;font-size:11px;margin-top:5px;text-align:center;font-family:serif;">${info.title}</p>`;
+                
+                document.body.appendChild(imgDiv); makeDraggable(imgDiv);
+            });
+        }
+
+        function makeDraggable(el) {
+            let p1 = 0, p2 = 0, p3 = 0, p4 = 0; el.onmousedown = (e) => {
+                e.preventDefault(); p3 = e.clientX; p4 = e.clientY; el.style.zIndex = parseInt(el.style.zIndex || 10000) + 1;
+                document.onmouseup = () => { document.onmouseup = null; document.onmousemove = null; };
+                document.onmousemove = (e) => { e.preventDefault(); p1 = p3 - e.clientX; p2 = p4 - e.clientY; p3 = e.clientX; p4 = e.clientY; el.style.top = (el.offsetTop - p2) + "px"; el.style.left = (el.offsetLeft - p1) + "px"; };
+            };
+        }
+
+        // --- Render Loop ---
         function animate(time) {
             requestAnimationFrame(animate); TWEEN.update(time); controls.update();
-            if (pickableObjects.length > 0) { const t = time / 800; pickableObjects.forEach(obj => { if (obj.userData.localStartY !== undefined) { obj.position.y = obj.userData.localStartY + Math.sin(t + obj.userData.floatPhase) * 0.015; 
-                if (obj.material.emissiveIntensity !== undefined) { obj.material.emissiveIntensity = 2.0 + Math.sin(t * 3) * 0.5; }
-             } }); }
-            if (stars && stars.visible) { stars.rotation.y += 0.0003; }
-            animateRain();
-            noisePass.uniforms.time.value = time * 0.0001;
-            composer.render();
+            if (pickableObjects.length > 0) { 
+                const t = time / 800; pickableObjects.forEach(obj => { 
+                    if (obj.userData.localStartY !== undefined) { 
+                        obj.position.y = obj.userData.localStartY + Math.sin(t + obj.userData.floatPhase) * 0.015; 
+                        if (obj.material.emissiveIntensity !== undefined) obj.material.emissiveIntensity = 2.0 + Math.sin(t * 3) * 0.5; 
+                    } 
+                }); 
+            }
+            if (rainSystem && rainSystem.visible) {
+                const pos = rainSystem.geometry.attributes.position.array;
+                for (let i = 1; i < pos.length; i += 3) { pos[i] -= 2.0; if (pos[i] < -20) pos[i] = 150; }
+                rainSystem.geometry.attributes.position.needsUpdate = true;
+            }
+            noisePass.uniforms.time.value = time * 0.0001; composer.render();
         }
         animate();
 
